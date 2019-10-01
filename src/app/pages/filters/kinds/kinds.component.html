@@ -1,1 +1,96 @@
-<p>kinds works!</p>
+<div class="row as-7">
+
+    <div class="col as-12 xl-7">
+        <div class="panel h-100p">
+
+            <div class="panel-header p-20">
+                <h1 class="panel-title bold">
+                    <i aria-hidden="true" class="icon-sort-three-line mr-10"></i>
+                    Növlər
+                </h1>
+            </div>
+
+            <div class="panel-body p-20">
+                <div class="dd nestable3">
+                    <ol class="dd-list">
+                        <li *ngFor="let kind of kinds" class="box box-solid dd-item dd3-item collapsed-box">
+                            <div class="box-tools dd3-content clearfix">
+                                <span> {{kind.name_az}} </span>
+                                <a class="float-right"><i aria-hidden="true" class="icon-settings"></i></a>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col as-12 mb-10 hide-xl"></div>
+
+    <div class="col as-12 xl-5">
+        <div class="panel h-100p">
+
+            <div class="panel-header p-20">
+
+                <h2 class="panel-title bold float-left">Əlavə et</h2>
+            </div>
+            <form [formGroup]="addKindForm" (ngSubmit)="onSubmit()">
+                <div class="panel-body">
+
+                    <div class="row as-7 mb-15">
+                    </div>
+
+                    <div class="clear mb-15">
+
+                        <label>Növ adı AZ</label>
+
+                        <input formControlName='name_az' class="input" type="text" placeholder="Kateqoriya adını yazın">
+
+                    </div>
+                    <div class="clear mb-15">
+
+                        <label>Növ adı RU</label>
+
+                        <input formControlName='name_ru' class="input" type="text" placeholder="Kateqoriya adını yazın">
+
+                    </div>
+                    <div class="clear mb-15">
+
+                        <label>Növ adı EN</label>
+
+                        <input formControlName='name_en' class="input" type="text" placeholder="Kateqoriya adını yazın">
+
+                    </div>
+
+                    <div class="clear mb-15">
+                        <label>Ana kateqoriya</label>
+                        <p-dropdown placeholder="Ana kateqoriya seçin" filter="true" [options]="selectCategoryList"
+                            (onChange)="onSelectCategory($event)" class="input select custom" >
+                        </p-dropdown>
+                    </div>
+                    <div class="clear">
+                        <label>Ana kateqoriya</label>
+                        <p-dropdown placeholder="Alt kateqoriya seçin" filter="true" formControlName='category_id' [options]="subCategoryList"
+                            class="input select custom">
+                        </p-dropdown>
+                    </div>
+
+                </div>
+
+                <div class="panel-footer">
+                    <button class="btn bg-red border-0 shadow" title="Sil" data-target-modal="alert-modal">
+                        <i aria-hidden="true" class="icon-trash mr-10"></i>
+                        Sil
+                    </button>
+                    <button type="submit" [disabled]='!addKindForm.valid' class="btn bg-green shadow border-0 float-right" title="Yadda saxla">
+                        Yadda saxla
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>

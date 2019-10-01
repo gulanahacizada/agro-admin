@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { KindsRoutingModule } from './kinds-routing.module';
 import { KindsComponent } from '../kinds.component';
@@ -8,7 +10,10 @@ import { KindsComponent } from '../kinds.component';
   declarations: [KindsComponent],
   imports: [
     CommonModule,
-    KindsRoutingModule
+    KindsRoutingModule,
+    DropdownModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class KindsModule { }

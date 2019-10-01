@@ -163,49 +163,49 @@ $(document).ready(function() {
     /* Froala Editor */
     /*====================================================================================================================*/
 
-    $('.editor').froalaEditor({
-        language: 'az',
-        heightMin: 400,
-        heightMax: 600,
-        linkText: true,
-        imageDefaultWidth: 0,
-        tableResizer: false,
-        toolbarButtons: ['undo', 'redo', '|', 'insertLink', 'insertImage', 'insertVideo', 'insertTable', 'color', 'emoticons', '|', 'selectAll', 'clearFormatting', 'html', '-', 'paragraphFormat', 'quote', 'fontSize', 'align', 'formatOL', 'formatUL', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'code', 'kbd'],
-        toolbarButtonsMD: ['undo', 'redo', '|', 'insertLink', 'insertImage', 'insertVideo', 'insertTable', 'color', 'emoticons', '|', 'selectAll', 'clearFormatting', 'html', '-', 'paragraphFormat', 'quote', 'fontSize', 'align', 'formatOL', 'formatUL', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'code', 'kbd'],
-        toolbarButtonsSM: ['undo', 'redo', '|', 'insertLink', 'insertImage', 'insertVideo', 'insertTable', 'color', 'emoticons', '|', 'selectAll', 'clearFormatting', 'html', '-', 'paragraphFormat', 'quote', 'fontSize', 'align', 'formatOL', 'formatUL', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'code', 'kbd'],
-        tableCellStyles: {
-            class1: 'table-header',
-            class2: 'table-footer'
-        },
-        paragraphFormat: {
-            N: "Normal",
-            Pre: "Pre",
-            Header: "header",
-            Footer: "footer",
-            H1: "Heading 1",
-            H2: "Heading 2",
-            H3: "Heading 3",
-            H4: "Heading 4",
-            H5: "Heading 5",
-            H6: "Heading 6"
-        }
-    });
+    // $('.editor').froalaEditor({
+    //     language: 'az',
+    //     heightMin: 400,
+    //     heightMax: 600,
+    //     linkText: true,
+    //     imageDefaultWidth: 0,
+    //     tableResizer: false,
+    //     toolbarButtons: ['undo', 'redo', '|', 'insertLink', 'insertImage', 'insertVideo', 'insertTable', 'color', 'emoticons', '|', 'selectAll', 'clearFormatting', 'html', '-', 'paragraphFormat', 'quote', 'fontSize', 'align', 'formatOL', 'formatUL', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'code', 'kbd'],
+    //     toolbarButtonsMD: ['undo', 'redo', '|', 'insertLink', 'insertImage', 'insertVideo', 'insertTable', 'color', 'emoticons', '|', 'selectAll', 'clearFormatting', 'html', '-', 'paragraphFormat', 'quote', 'fontSize', 'align', 'formatOL', 'formatUL', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'code', 'kbd'],
+    //     toolbarButtonsSM: ['undo', 'redo', '|', 'insertLink', 'insertImage', 'insertVideo', 'insertTable', 'color', 'emoticons', '|', 'selectAll', 'clearFormatting', 'html', '-', 'paragraphFormat', 'quote', 'fontSize', 'align', 'formatOL', 'formatUL', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'code', 'kbd'],
+    //     tableCellStyles: {
+    //         class1: 'table-header',
+    //         class2: 'table-footer'
+    //     },
+    //     paragraphFormat: {
+    //         N: "Normal",
+    //         Pre: "Pre",
+    //         Header: "header",
+    //         Footer: "footer",
+    //         H1: "Heading 1",
+    //         H2: "Heading 2",
+    //         H3: "Heading 3",
+    //         H4: "Heading 4",
+    //         H5: "Heading 5",
+    //         H6: "Heading 6"
+    //     }
+    // });
 
-    $('.basic-editor').froalaEditor({
-        language: 'az',
-        heightMin: 220,
-        heightMax: 300,
-        linkText: true,
-        toolbarSticky: false,
-        // toolbarBottom: true,
-        toolbarButtons: ['formatOL', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript'],
-        toolbarButtonsMD: ['formatOL', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript'],
-        toolbarButtonsSM: ['formatOL', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript'],
-        toolbarButtonsXS: ['formatOL', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript'],
-        charCounterCount: false,
-        quickInsert: false
+    // $('.basic-editor').froalaEditor({
+    //     language: 'az',
+    //     heightMin: 220,
+    //     heightMax: 300,
+    //     linkText: true,
+    //     toolbarSticky: false,
+    //     // toolbarBottom: true,
+    //     toolbarButtons: ['formatOL', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript'],
+    //     toolbarButtonsMD: ['formatOL', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript'],
+    //     toolbarButtonsSM: ['formatOL', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript'],
+    //     toolbarButtonsXS: ['formatOL', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript'],
+    //     charCounterCount: false,
+    //     quickInsert: false
 
-    });
+    // });
 
     /*====================================================================================================================*/
     /* Date Picker */

@@ -8,8 +8,14 @@ import { Observable } from 'rxjs/index';
 })
 export class AppService extends HttpsService {
 
-  public LOGOUT = 'logout';
-  public LOGIN = 'login';
+  public LOGIN = 'auth/login';
+  public LOGOUT = 'auth/logout';
+  public GET_ALL_CATEGORY = 'category';
+  public ADD_CATEGORY = 'category';
+  public GET_ALL_KIND = 'kinds';
+  public ADD_KIND = 'kinds';
+  public GET_ALL_PACKEG = 'package';
+  public ADD_PACKEG = 'package';
 
   constructor(public http: HttpClient) {
     super();

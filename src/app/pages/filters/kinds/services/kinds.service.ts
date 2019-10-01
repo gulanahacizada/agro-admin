@@ -1,9 +1,27 @@
 import { Injectable } from '@angular/core';
+import { AppService } from 'src/app/services/app/app.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class KindsService {
+export class KindsService extends AppService{
 
-  constructor() { }
+  constructor(public http: HttpClient) {
+    super(http);
+  }
+
+
+  public getAllSubCategory( params: any = {}): Observable<any> {
+    return this.get(this.http, this.GET_ALL_CATEGORY, params);
+  }
+
+  public getKind( params: any = {}): Observable<any> {
+    return this.get(this.http, this.GET_ALL_KIND, params);
+  }
+
+  public addKind( params: any = {}): Observable<any> {
+    return this.post(this.http, this.ADD_KIND, params);
+  }
 }
