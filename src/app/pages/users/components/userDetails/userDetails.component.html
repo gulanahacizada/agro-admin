@@ -1,0 +1,126 @@
+<div class="panel mb-15">
+  <div class="panel-header p-20 pt-15 pb-15">
+    <h1 class="panel-title bold float-left">
+      <i aria-hidden="true" class="icon-users mr-10"></i>
+      {{userInfo?.name}}
+    </h1>
+  </div>
+
+  <div class="panel-body p-20">
+
+    <div class="row border-bottom pb-5">
+      <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
+        Voen:
+      </div>
+      <div class="col as-9 xs-7 pb-5">
+        <span class="bold" title="Balayev Kamal Mirzə">
+          {{userInfo?.voen}}
+        </span>
+      </div>
+    </div>
+
+    <div class="row border-bottom pt-10 pb-5">
+      <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
+        Bank hesabı
+      </div>
+      <div class="col as-9 xs-7 pb-5">
+        {{userInfo?.bank_account}}
+      </div>
+    </div>
+
+    <div class="row border-bottom pt-10 pb-5">
+      <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
+        Telefon:
+      </div>
+      <div class="col as-9 xs-7 pb-5">
+        <a href="" rel="external" title="+994773097879" target="_blank">{{phone[0]?.contact}}</a>
+      </div>
+    </div>
+    <div class="row border-bottom pt-10 pb-5">
+      <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
+        Email:
+      </div>
+      <div class="col as-9 xs-7 pb-5">
+        <a href="" rel="external" title="+994773097879" target="_blank">{{email[0]?.contact}}</a>
+      </div>
+    </div>
+
+    <div class="row border-bottom pt-10 pb-5">
+      <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
+        Tipi:
+      </div>
+      <div class="col as-9 xs-7 pb-5">
+        <div [ngSwitch]="userInfo?.is_company">
+
+          <div *ngSwitchCase="1">
+            Hüquqi şəxs
+          </div>
+          <div *ngSwitchCase="2">
+            Fiziki şəxs
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row border-bottom pt-10 pb-5">
+      <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
+        Şirkət haqqında:
+      </div>
+      <div class="col as-9 xs-7 pb-5">
+        {{userInfo?.description}}
+      </div>
+    </div>
+
+    <div class="row border-bottom pt-10 pb-5">
+      <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
+        Yaranma tarixi:
+      </div>
+      <div class="col as-9 xs-7 pb-5">
+        {{userInfo?.created_at| date }}
+      </div>
+    </div>
+
+    <div class="row border-bottom pt-10 pb-5">
+      <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
+        Status:
+      </div>
+      <div class="col as-9 xs-7 pb-5">
+        <div [ngSwitch]="userInfo?.status">
+
+          <div *ngSwitchCase="1">
+            activ
+          </div>
+          <div *ngSwitchCase="2">
+            passiv
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row border-bottom pt-10 pb-5">
+      <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
+        verified:
+      </div>
+      <div class="col as-9 xs-7 pb-5">
+        <div [ngSwitch]="userInfo?.verified">
+
+          <div *ngSwitchCase="1">
+            activ
+          </div>
+          <div *ngSwitchCase="2">
+            passiv
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- <div class="panel-footer">
+        <button class="btn bg-red border-0 shadow" title="İmtina et" data-target-modal="alert-modal">
+            İmtina et
+        </button>
+        <button type="submit" class="btn bg-green shadow border-0 float-right" title="Təsdiqlə">
+            Təsdiqlə
+        </button>
+    </div> -->
+
+</div>

@@ -9,4 +9,5 @@
             <input formControlName='password' class="input" type="password" placeholder="Password">
         </div>
         <button [disabled]="!loginForm.valid" class="btn bg-green shadow border-0 float-right" >Submit</button>
+        <p> {{errorMessage}} </p>
 </form>

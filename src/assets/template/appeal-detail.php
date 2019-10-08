@@ -1,7 +1,6 @@
 <?php include("header.php") ?>
 
 <div class="panel mb-15">
-
     <div class="panel-header p-20 pt-15 pb-15">
         <h1 class="panel-title bold float-left">
             <i aria-hidden="true" class="icon-envelope mr-10"></i>

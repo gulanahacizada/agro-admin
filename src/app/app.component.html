@@ -1,6 +1,6 @@
 
 <!--Min Header-->
-        <header [hidden]="!loggedIn()" class="main-header panel d-table tr-3s w-100p">
+        <header *ngIf="!router.url.includes('login')" class="main-header panel d-table tr-3s w-100p">
             <div class="d-row">
 
                 <!--Nav Toggle-->
@@ -111,7 +111,7 @@
         </header>
 
         <!--Left Side Menu-->
-        <aside [hidden]="!loggedIn()" class="main_side_menu bg-main shadow light tr-3s" id="sidebar-menu">
+        <aside *ngIf="!router.url.includes('login')" class="main_side_menu bg-main shadow light tr-3s" id="sidebar-menu">
 
             <div class="side-header text-center shadow">
                 <div class="d-block clear" title="Elvin Abbasov">
@@ -127,7 +127,7 @@
                 <ul class="nav_menu-list type-none m-0 p-0" role="menubar">
 
                     <li role="presentation" class="nav_menu-list-item">
-                        <a href="index.php" title="Ana panel" role="menuitem" class="menu-item">
+                        <a [routerLink]="['/home']" routerLinkActive="current-page"title="Ana panel" role="menuitem" class="menu-item">
                             <i aria-hidden="true" class="icon-monitor"></i>
                             Ana panel
                         </a>
@@ -136,21 +136,21 @@
                     <li role="separator" class="mb-10 pb-10"></li>
 
                     <li role="presentation" class="nav_menu-list-item">
-                        <a href="partners.php" title="Üzvlər" role="menuitem" class="menu-item">
+                        <a [routerLink]="['/users']" routerLinkActive="current-page"  title="Üzvlər" role="menuitem" class="menu-item">
                             <i aria-hidden="true" class="icon-list-square"></i>
                             Üzvlər
                         </a>
                     </li>
 
                     <li role="presentation" class="nav_menu-list-item">
-                        <a href="news.php" title="Xəbərlər" role="menuitem" class="menu-item">
+                        <a [routerLink]="['/news']" routerLinkActive="current-page" title="Xəbərlər" role="menuitem" class="menu-item">
                             <i aria-hidden="true" class="icon-newspaper-3"></i>
                             Xəbərlər
                         </a>
                     </li>
 
                     <li role="presentation" class="nav_menu-list-item">
-                        <a href="agronomist.php" title="Aqronomlar" role="menuitem" class="menu-item">
+                        <a [routerLink]="['/agronoms']" routerLinkActive="current-page"  title="Aqronomlar" role="menuitem" class="menu-item">
                             <i aria-hidden="true" class="icon-users"></i>
                             Aqronomlar
                         </a>
@@ -159,7 +159,7 @@
                     <li role="separator" class="mb-10 pb-10"></li>
 
                     <li role="presentation" class="nav_menu-list-item">
-                        <a href="offers.php" title="Təkliflər" role="menuitem" class="menu-item">
+                        <a [routerLink]="['/offers']" routerLinkActive="current-page"  title="Təkliflər" role="menuitem" class="menu-item">
                             <i aria-hidden="true" class="icon-hand-shake"></i>
                             Təkliflər
                         </a>
@@ -199,7 +199,7 @@
 
                         <ul class="sub_menu type-none m-0 pl-0 pt-10 pb-10" role="menu">
                             <li role="presentation" class="sub_menu-item">
-                                <a href="about.php" title="Haqqımızda" role="menuitem" class="menu-item">
+                                <a [routerLink]="['/about']" routerLinkActive="current-page" title="Haqqımızda" role="menuitem" class="menu-item">
                                     Haqqımızda
                                 </a>
                             </li>
@@ -234,7 +234,7 @@
                                 </a>
                             </li>
                             <li role="presentation" class="sub_menu-item">
-                                <a title="Keyfiyyətlər" role="menuitem" class="menu-item">
+                                <a [routerLink]="['/quality']" routerLinkActive="current-page"title="Keyfiyyətlər" role="menuitem" class="menu-item">
                                     Keyfiyyətlər
                                 </a>
                             </li>
@@ -245,10 +245,15 @@
                                 </a>
                             </li>
                             <li role="presentation" class="sub_menu-item">
-                                <a title="Kalibrlər" role="menuitem" class="menu-item">
+                                <a [routerLink]="['/size']" title="Kalibrlər" role="menuitem" class="menu-item">
                                     Kalibrlər
                                 </a>
                             </li>
+                            <li role="presentation" class="sub_menu-item">
+                                    <a [routerLink]="['/unit']" title="Kalibrlər" role="menuitem" class="menu-item">
+                                        Ölçü vahidi
+                                    </a>
+                                </li>
                         </ul>
 
                     </li>

@@ -32,8 +32,9 @@ export class CategoryComponent implements OnInit {
   getAllCategory() {
     this.categoryService.getCategory().subscribe((response: Response) => {
       this.categoryList = response.responseContent;
+      console.log(this.categoryList);
       this.selectCategoryList = (this.categoryList || []).map((r: any) => ({
-        label: r.name_az,
+        label: r.name,
         value: r.id
       }));
     });

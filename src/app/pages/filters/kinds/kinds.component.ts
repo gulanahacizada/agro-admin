@@ -42,7 +42,7 @@ export class KindsComponent implements OnInit {
     this.kindService.getAllSubCategory().subscribe((response: Response) => {
       this.categoryList = response.responseContent;
       this.selectCategoryList = (this.categoryList || []).map((r: any) => ({
-        label: r.name_az,
+        label: r.name,
         value: r
       }));
     });
@@ -52,7 +52,7 @@ export class KindsComponent implements OnInit {
     this.subCategory = event.value.subCategories;
     console.log(this.subCategory);
     this.subCategoryList = (this.subCategory || []).map((r: any) => ({
-      label: r.name_az,
+      label: r.name,
       value: r.id
     }));
   }
@@ -77,9 +77,9 @@ export class KindsComponent implements OnInit {
 
   }
 
-  addKind() {
-    this.kindService.addKind(this.addKindForm.value).subscribe()
-  }
+  // addKind() {
+  //   this.kindService.addKind(this.addKindForm.value).subscribe()
+  // }
 
 
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Response } from 'src/app/interfaces/response';
+import { SizeService } from './services/size.service';
 
 @Component({
   selector: 'app-size',
@@ -7,9 +10,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SizeComponent implements OnInit {
 
-  constructor() { }
+  kalibryList: any;
+  addKalibryForm: FormGroup;
+
+  constructor(
+    private kalibryService: SizeService,
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit() {
+    this.getAllKalibry();
+    this.createAddKalibryForm();
+  }
+
+  getAllKalibry() {
+    this.kalibryService.getAllKalibry().subscribe((response: Response) => {
+      this.kalibryList = response.responseContent;
+    });
+  }
+
+  createAddKalibryForm() {
+    this.addKalibryForm = this.fb.group({
+      name_az:     [, Validators.required],
+      name_ru:     [, Validators.required],
+      name_en:     [, Validators.required],
+    });
+  }
+
+  onSubmit() {
+    if (this.addKalibryForm.valid) {
+      this.kalibryService.addKalibry(this.addKalibryForm.value).subscribe( () => {
+        this.addKalibryForm.reset();
+        this.getAllKalibry();
+      });
+    }
   }
 
 }

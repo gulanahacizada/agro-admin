@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/services/app/app.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Response } from 'src/app/interfaces/response';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  errorMessage: string;
 
   constructor(
     private appService: AppService,
@@ -35,10 +37,14 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const data = Object.assign({}, this.loginForm.value);
       console.log(data);
-      this.appService.login(data).subscribe( (response) => {
-        localStorage.setItem('acc_jwt', response.responseContent.access_token);
-        this.router.navigate(['/home']);
-        console.log(response);
+      this.appService.login(data).subscribe( (response: Response) => {
+        if (response.responseCode == 1) {
+          localStorage.setItem('acc_jwt', response.responseContent.access_token);
+          window.location.href = '/home';
+        }
+        if (response.responseCode == 2) {
+          this.errorMessage = response.responseMessage;
+        }
       });
     }
   }

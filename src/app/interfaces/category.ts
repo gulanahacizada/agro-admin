@@ -1,16 +1,12 @@
 export interface Category {
     id: number;
-    name_en: string;
-    name_ru: string;
-    name_az: string;
-    subCategories: [
+    name: string;
+    sub_categories: [
         {
             id: number;
             parent_id: number,
-            name_en: string;
-            name_ru: string;
-            name_az: string;
+            name: string;
             status: number;
         },
-    ]
+    ];
 }

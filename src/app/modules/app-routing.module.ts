@@ -26,16 +26,6 @@ export const routes: Routes = [
     loadChildren: () => import('../pages/agronomists/modules/agronomists.module').then(m => m.AgronomistsModule)
   },
   {
-    path: 'app-contact',
-    canActivate: [AuthGuard],
-    loadChildren: () => import('../pages/applications/application-contact/modules/application-contact.module').then(m => m.ApplicationContactModule)
-  },
-  {
-    path: 'app-member',
-    canActivate: [AuthGuard],
-    loadChildren: () => import('../pages/applications/application-members/modules/application-members.module').then(m => m.ApplicationMembersModule)
-  },
-  {
     path: 'users',
     canActivate: [AuthGuard],
     loadChildren: () => import('../pages/users/modules/users.module').then(m => m.UsersModule)
@@ -66,6 +56,11 @@ export const routes: Routes = [
     loadChildren: () => import('../pages/filters/pakcage/modules/pakcage.module').then(m => m.PakcageModule)
   },
   {
+    path: 'quality',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('../pages/filters/quality/modules/quality.module').then(m => m.QualityModule)
+  },
+  {
     path: 'size',
     canActivate: [AuthGuard],
     loadChildren: () => import('../pages/filters/size/modules/size.module').then(m => m.SizeModule)
@@ -74,6 +69,11 @@ export const routes: Routes = [
     path: 'unit',
     canActivate: [AuthGuard],
     loadChildren: () => import('../pages/filters/units/modules/units.module').then(m => m.UnitsModule)
+  },
+  {
+    path: 'about',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('../pages/about/modules/about.module').then(m => m.AboutModule)
   },
   {
     path: '**',
