@@ -34,7 +34,6 @@ export class KindsComponent implements OnInit {
     this.kindService.getKind().subscribe((response: Response) => {
       this.kinds = response.responseContent;
       console.log(this.kinds);
-      
     });
   }
 
@@ -49,8 +48,7 @@ export class KindsComponent implements OnInit {
   }
 
   onSelectCategory(event) {
-    this.subCategory = event.value.subCategories;
-    console.log(this.subCategory);
+    this.subCategory = event.value.sub_categories;
     this.subCategoryList = (this.subCategory || []).map((r: any) => ({
       label: r.name,
       value: r.id
@@ -77,10 +75,12 @@ export class KindsComponent implements OnInit {
 
   }
 
-  // addKind() {
-  //   this.kindService.addKind(this.addKindForm.value).subscribe()
-  // }
-
-
-
+  addKind() {
+    if (this.addKindForm.valid) {
+      this.kindService.addKind(this.addKindForm.value).subscribe( () => {
+        this.addKindForm.reset();
+        this.getAllKind();
+      });
+    }
+  }
 }

@@ -34,6 +34,13 @@ export class AppService extends HttpsService {
   public GET_ALL_ABOUT = 'about';
   public GET_ABOUT_BY_ID = 'about';
   public EDIT_ABOUT_BY_ID = 'about';
+  public GET_ALL_CONTACT_OFFERS = 'offers';
+  public GET_CONTACT_OFFERS_BY_ID = 'offers';
+  public GET_ALL_DIALOGS = 'dialog';
+  public GET_ALL_NEW_USER_FOR_ADMIN = 'admin/user/new';
+  public GET_BY_ID_USER_FOR_ADMIN = 'admin/user';
+  public CHANGE_USER_STATUS = 'admin/user/changestatus';
+  public UPDATE_USER_FOR_ADMIN = 'admin/user';
 
   constructor(public http: HttpClient) {
     super();

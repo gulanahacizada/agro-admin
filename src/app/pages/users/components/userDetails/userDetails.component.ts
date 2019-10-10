@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Response } from 'src/app/interfaces/response';
 
 @Component({
@@ -18,6 +18,7 @@ export class UserDetailsComponent implements OnInit {
   constructor(
     private userService: UsersService,
     private activateRoute: ActivatedRoute,
+    private router: Router,
   ) {
     this.id = this.activateRoute.snapshot.params.id;
   }
@@ -29,8 +30,17 @@ export class UserDetailsComponent implements OnInit {
   getUserById() {
     this.userService.getUserById(this.id).subscribe((response: Response) => {
       this.userInfo = response.responseContent;
+      console.log(this.userInfo);
       this.phone = this.userInfo.contacts.filter(e => e.type == 0);
       this.email = this.userInfo.contacts.filter(e => e.type == 1);
+    });
+  }
+
+  changeStatus() {
+    this.userService.changeStatus(this.id).subscribe((response: Response) => {
+      if (response.responseCode == 1) {
+        this.router.navigate(['/users']);
+      }
     });
   }
 }

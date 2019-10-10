@@ -66,7 +66,7 @@
         Şirkət haqqında:
       </div>
       <div class="col as-9 xs-7 pb-5">
-        {{userInfo?.description}}
+        {{userInfo?.description_az}}
       </div>
     </div>
 
@@ -89,7 +89,7 @@
           <div *ngSwitchCase="1">
             activ
           </div>
-          <div *ngSwitchCase="2">
+          <div *ngSwitchCase="0">
             passiv
           </div>
         </div>
@@ -105,7 +105,7 @@
           <div *ngSwitchCase="1">
             activ
           </div>
-          <div *ngSwitchCase="2">
+          <div *ngSwitchCase="0">
             passiv
           </div>
         </div>
@@ -114,13 +114,11 @@
 
   </div>
 
-  <!-- <div class="panel-footer">
-        <button class="btn bg-red border-0 shadow" title="İmtina et" data-target-modal="alert-modal">
-            İmtina et
+  <div class="panel-footer">
+        <button (click)="changeStatus()" class="btn bg-red border-0 shadow float-right" title="İmtina et" data-target-modal="alert-modal">
+            Deaktiv et
         </button>
-        <button type="submit" class="btn bg-green shadow border-0 float-right" title="Təsdiqlə">
-            Təsdiqlə
-        </button>
-    </div> -->
+
+    </div>
 
 </div>

@@ -6,6 +6,7 @@ import { NewsRoutingModule } from './news-routing.module';
 import { NewsComponent } from '../news.component';
 import {EditorModule} from 'primeng/editor';
 import {DropdownModule} from 'primeng/dropdown';
+import {PaginatorModule} from 'primeng/paginator';
 import { AddNewComponent } from '../components/addNew/addNew.component';
 import { EditNewComponent } from '../components/editNew/editNew.component';
 
@@ -16,6 +17,7 @@ import { EditNewComponent } from '../components/editNew/editNew.component';
     EditorModule,
     DropdownModule,
     FormsModule,
+    PaginatorModule,
     ReactiveFormsModule,
     NewsRoutingModule
   ]

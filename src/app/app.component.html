@@ -175,13 +175,14 @@
 
                         <ul class="sub_menu type-none m-0 pl-0 pt-10 pb-10" role="menu">
                             <li role="presentation" class="sub_menu-item">
-                                <a href="appeals-for-registration.php" title="Üzvlük müraciəti" role="menuitem"
+                                 
+                                <a [routerLink]="['/members-request']" routerLinkActive="current-page"  title="Üzvlük müraciəti" role="menuitem"
                                     class="menu-item">
                                     Üzvlük müraciətləri
                                 </a>
                             </li>
                             <li role="presentation" class="sub_menu-item">
-                                <a href="appeals-for-contact.php" title="Əlaqə müraciəti" role="menuitem" class="menu-item">
+                                <a [routerLink]="['/contact-request']" routerLinkActive="current-page"  title="Əlaqə müraciəti" role="menuitem" class="menu-item">
                                     Əlaqə müraciətləri
                                 </a>
                             </li>

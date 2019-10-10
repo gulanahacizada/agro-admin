@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {EditorModule} from 'primeng/editor';
 import {DropdownModule} from 'primeng/dropdown';
+import {PaginatorModule} from 'primeng/paginator';
 
 import { AgronomistsRoutingModule } from './agronomists-routing.module';
 import { AgronomistsComponent } from '../agronomists.component';
@@ -15,6 +16,7 @@ import { EditAgronomComponent } from '../components/editAgronom/editAgronom.comp
     CommonModule,
     FormsModule,
     DropdownModule,
+    PaginatorModule,
     ReactiveFormsModule,
     EditorModule,
     AgronomistsRoutingModule

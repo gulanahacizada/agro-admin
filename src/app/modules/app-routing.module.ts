@@ -76,6 +76,17 @@ export const routes: Routes = [
     loadChildren: () => import('../pages/about/modules/about.module').then(m => m.AboutModule)
   },
   {
+    path: 'contact-request',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('../pages/requests/requests-contact/modules/requests-contact.module').then(m => m.RequestsContactModule)
+  },
+  {
+    path: 'members-request',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('../pages/requests/request-members/modules/request-members.module').then(m => m.RequestMembersModule)
+  },
+  
+  {
     path: '**',
     component: NotFoundComponent
   }
