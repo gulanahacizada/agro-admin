@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from './services/news.service';
 import { Response } from 'src/app/interfaces/response';
-import { Pagination } from 'src/app/interfaces/pagination';
 
 @Component({
   selector: 'app-news',
