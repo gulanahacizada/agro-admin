@@ -52,7 +52,8 @@ export class AddNewComponent implements OnInit {
       body_az: ['', Validators.required],
       body_ru: [''],
       body_en: [''],
-      image: []
+      image: [],
+      navigatorUrl: 'users'
     });
   }
 

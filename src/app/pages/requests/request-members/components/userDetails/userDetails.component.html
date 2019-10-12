@@ -1,67 +1,61 @@
 <div class="panel mb-15">
   <div class="panel-header p-20 pt-15 pb-15">
-      <h1 class="panel-title bold float-left">
-          <i aria-hidden="true" class="icon-envelope mr-10"></i>
-          Müraciətə ətraflı baxış
-      </h1>
+    <h1 class="panel-title bold float-left">
+      <i aria-hidden="true" class="icon-envelope mr-10"></i>
+      Müraciətə ətraflı baxış
+    </h1>
   </div>
-
   <div class="panel-body p-20">
-
-      <div class="row border-bottom pb-5">
-          <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
-              Adı:
-          </div>
-          <div class="col as-9 xs-7 pb-5">
-              <span class="bold" title="Balayev Kamal Mirzə"> {{userInfo?.name}} </span>
-          </div>
+    <div class="row border-bottom pb-5">
+      <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
+        Adı:
       </div>
-      <div class="row border-bottom pt-10 pb-5">
-        <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
-            Əlagə:
-        </div>
-        <div class="col as-9 xs-7 pb-5">
-            <a rel="external" >{{userInfo?.contacts[0].contact}}</a>
-        </div>
-    </div>
-      <div class="row border-bottom pt-10 pb-5">
-          <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
-              Müraciət tarixi:
-          </div>
-          <div class="col as-9 xs-7 pb-5"> {{userInfo?.created_at | date: 'dd/MM/yyyy'}} </div>
+      <div class="col as-9 xs-7 pb-5">
+        <span class="bold" title="Balayev Kamal Mirzə"> {{userInfo?.name}} </span>
       </div>
-      <div class="row border-bottom pt-10 pb-5">
-        <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
-            Voen:
-        </div>
-        <div class="col as-9 xs-7 pb-5">
-           {{userInfo?.voen}}
-        </div>
     </div>
     <div class="row border-bottom pt-10 pb-5">
       <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
-          Tipi:
+        Əlagə:
       </div>
       <div class="col as-9 xs-7 pb-5">
-          <div [ngSwitch]="userInfo?.is_company">
-
-              <div *ngSwitchCase="1">
-                  Hüquqi şəxs
-              </div>
-              <div *ngSwitchCase="0">
-                Fiziki şəxs
-              </div>
-            </div>
+        <a rel="external">{{userInfo?.contacts[0].contact}}</a>
       </div>
-  </div>
+    </div>
+    <div class="row border-bottom pt-10 pb-5">
+      <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
+        Müraciət tarixi:
+      </div>
+      <div class="col as-9 xs-7 pb-5"> {{userInfo?.created_at | date: 'dd/MM/yyyy'}} </div>
+    </div>
+    <div class="row border-bottom pt-10 pb-5">
+      <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
+        Voen:
+      </div>
+      <div class="col as-9 xs-7 pb-5">
+        {{userInfo?.voen}}
+      </div>
+    </div>
+    <div class="row border-bottom pt-10 pb-5">
+      <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
+        Tipi:
+      </div>
+      <div class="col as-9 xs-7 pb-5">
+        <div [ngSwitch]="userInfo?.is_company">
 
+          <div *ngSwitchCase="1">
+            Hüquqi şəxs
+          </div>
+          <div *ngSwitchCase="0">
+            Fiziki şəxs
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
   <div class="panel-footer">
     <button (click)="changeStatus()" type="submit" class="btn bg-green shadow border-0 float-right" title="Yadda saxla">
       Aktiv et
     </button>
   </div>
-
 </div>
-

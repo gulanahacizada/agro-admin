@@ -17,7 +17,7 @@ export class OffersService extends AppService {
   }
 
   public getDialogById( params: any = {}): Observable<any> {
-    return this.get(this.http, this.ADMIN_DIALOGS + '/' + params);
+    return this.get(this.http, this.ADMIN_DIALOG + '/' + params);
   }
 
 }

@@ -1,105 +1,93 @@
 <form [formGroup]="newEditForm" (ngSubmit)="onSubmit()" class="panel">
-
-    <div class="panel-header p-20">
-        <h1 class="panel-title bold float-left">
-            <i aria-hidden="true" class="icon-plus mr-10"></i>
-            Xəbəri redakte et
-        </h1>
-        <p-dropdown [options]="langList" (onChange)="onSelectLang($event)" class="border-0 pointer float-right">
-        </p-dropdown>
-    </div>
-
-    <div class="pt-20 pl-20 pr-20 bg-gray">
-        <div class="row as-10 xs-5">
-
-            <div class="col as-12 xl-6 mb-20">
-                <label>Xəbər</label>
-                <div class="shadow">
-                    <div [ngSwitch]="selectLang">
-                        <div *ngSwitchCase="1">
-                            <p-editor [style]="{'height':'320px'}" placeholder="Xəbər az" formControlName="body_az">
-                            </p-editor>
-                        </div>
-                        <div *ngSwitchCase="2">
-                            <p-editor [style]="{'height':'320px'}" placeholder="Xəbər ru" formControlName="body_ru">
-                            </p-editor>
-                        </div>
-                        <div *ngSwitchCase="3">
-                            <p-editor [style]="{'height':'320px'}" placeholder="Xəbər en" formControlName="body_en">
-                            </p-editor>
-                        </div>
-                    </div>
-                </div>
+  <div class="panel-header p-20">
+    <h1 class="panel-title bold float-left">
+      <i aria-hidden="true" class="icon-plus mr-10"></i>
+      Xəbəri redakte et
+    </h1>
+    <p-dropdown [options]="langList" (onChange)="onSelectLang($event)" class="border-0 pointer float-right">
+    </p-dropdown>
+  </div>
+  <div class="pt-20 pl-20 pr-20 bg-gray">
+    <div class="row as-10 xs-5">
+      <div class="col as-12 xl-6 mb-20">
+        <label>Xəbər</label>
+        <div class="shadow">
+          <div [ngSwitch]="selectLang">
+            <div *ngSwitchCase="1">
+              <p-editor [style]="{'height':'320px'}" placeholder="Azərbaycan Dili" formControlName="body_az">
+              </p-editor>
             </div>
-            <div class="col as-12 xl-6 mb-20">
-                <div class="clear mb-15">
-
-                    <label>Xəbər başlıgı</label>
-
-                    <div [ngSwitch]="selectLang">
-                            <div *ngSwitchCase="1">
-                                <input formControlName="title_az" class="input" type="text" placeholder="Xəbər başlıgı az">
-                            </div>
-                            <div *ngSwitchCase="2">
-                                <input formControlName="title_ru" class="input" type="text" placeholder="Xəbər başlıgı ru">
-                            </div>
-                            <div *ngSwitchCase="3">
-                                <input formControlName="title_en" class="input" type="text" placeholder="Xəbər başlıgı en">
-                            </div>
-                        </div>
-
-                </div>
-                <div class="clear mb-15">
-
-                    <label>Xəbər açıglaması</label>
-
-                    <div [ngSwitch]="selectLang">
-                            <div *ngSwitchCase="1">
-                                <textarea formControlName="description_az" class="input" type="text" placeholder="Xəbər açıglaması az"></textarea>
-                            </div>
-                            <div *ngSwitchCase="2">
-                                    <textarea formControlName="description_ru" class="input" type="text" placeholder="Xəbər açıglaması ru"></textarea>
-                            </div>
-                            <div *ngSwitchCase="3">
-                                <textarea formControlName="description_en" class="input" type="text" placeholder="Xəbər açıglaması en"></textarea>
-                            </div>
-                        </div>
-
-                </div>
-                <div class="clear mb-15">
-
-                    <label>Xəbərin şəkili</label>
-                    <div *ngIf="url" class="col mt-10">
-                        <div class="thumb-preview thumb contain shadow">
-                            <span (click)="deletePhoto()" role="button" class="close icon-close"
-                                aria-label="Ləğv et"></span>
-                            <img src="{{url}}" class="p-5">
-                        </div>
-                    </div>
-                    <img *ngIf="!url" style="display:block;width: 300px;margin: auto;object-fit: cover;"
-                        src="{{newInfo?.image}}" alt="">
-                </div>
-                <div class="col as-12 xl-12 mb-20">
-                    <span *ngIf="!url" class="btn btn-file bg-white border-0 shadow w-100p">
-                        <i aria-hidden="true" class="icon-folder mr-10"></i>
-                        Şəkil dəyiş
-                        <input formControlName="image" type="file" id="photo" #fileInput
-                            (change)="onFileChange($event)">
-                    </span>
-                </div>
+            <div *ngSwitchCase="2">
+              <p-editor [style]="{'height':'320px'}" placeholder="Rus Dili" formControlName="body_ru">
+              </p-editor>
             </div>
-
+            <div *ngSwitchCase="3">
+              <p-editor [style]="{'height':'320px'}" placeholder="İngilis Dili" formControlName="body_en">
+              </p-editor>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="col as-12 xl-6 mb-20">
+        <div class="clear mb-15">
+          <label>Başlıq</label>
+          <div [ngSwitch]="selectLang">
+            <div *ngSwitchCase="1">
+              <input formControlName="title_az" class="input" type="text" placeholder="Azərbaycan Dili">
+            </div>
+            <div *ngSwitchCase="2">
+              <input formControlName="title_ru" class="input" type="text" placeholder="Rus Dili">
+            </div>
+            <div *ngSwitchCase="3">
+              <input formControlName="title_en" class="input" type="text" placeholder="İngilis Dili">
+            </div>
+          </div>
+        </div>
+        <div class="clear mb-15">
+          <label>Açıqlama</label>
+          <div [ngSwitch]="selectLang">
+            <div *ngSwitchCase="1">
+              <textarea formControlName="description_az" class="input" type="text"
+                placeholder="Azərbaycan Dili"></textarea>
+            </div>
+            <div *ngSwitchCase="2">
+              <textarea formControlName="description_ru" class="input" type="text" placeholder="Rus Dili"></textarea>
+            </div>
+            <div *ngSwitchCase="3">
+              <textarea formControlName="description_en" class="input" type="text"
+                placeholder="İngilis Dili"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="clear mb-15">
+          <label>Görüntü</label>
+          <div *ngIf="url" class="col mt-10">
+            <div class="thumb-preview thumb contain shadow">
+              <span (click)="deletePhoto()" role="button" class="close icon-close" aria-label="Ləğv et"></span>
+              <img src="{{url}}" class="p-5">
+            </div>
+          </div>
+          <img *ngIf="!url" style="display:block;width: 300px;margin: auto;object-fit: cover;" src="{{newInfo?.image}}"
+            alt="">
+        </div>
+        <div class="col as-12 xl-12 mb-20">
+          <span *ngIf="!url" class="btn btn-file bg-white border-0 shadow w-100p">
+            <i aria-hidden="true" class="icon-folder mr-10"></i>
+            Şəkil dəyiş
+            <input formControlName="image" type="file" id="photo" #fileInput (change)="onFileChange($event)">
+          </span>
+        </div>
+      </div>
     </div>
-
-    <div class="panel-footer">
-        <button type="button" (click)="deleteNew()" class="btn bg-red border-0 shadow" title="Sil" data-target-modal="alert-modal">
-            <i aria-hidden="true" class="icon-trash mr-10"></i>
-            Sil
-        </button>
-        <button type="submit" class="btn bg-green shadow border-0 float-right" title="Yadda saxla">
-            Yadda saxla
-        </button>
-    </div>
-
+  </div>
+  <div class="panel-footer">
+    <button type="button" (click)="deleteNew()" class="btn bg-red border-0 shadow" title="Sil"
+      data-target-modal="alert-modal">
+      <i aria-hidden="true" class="icon-trash mr-10"></i>
+      Sil
+    </button>
+    <button type="submit" class="btn bg-green shadow border-0 float-right" title="Yadda saxla">
+      Yadda saxla
+    </button>
+  </div>
 </form>

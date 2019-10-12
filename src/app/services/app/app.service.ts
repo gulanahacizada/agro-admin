@@ -26,6 +26,8 @@ export class AppService extends HttpsService {
   public USER_ADMIN = 'admin/user';
   public USER_STATUS = 'admin/user/changestatus';
   public ADMIN_DIALOGS = 'admin/dialogs';
+  public ADMIN_DIALOG = 'dialog';
+
 
   constructor(public http: HttpClient) {
     super();

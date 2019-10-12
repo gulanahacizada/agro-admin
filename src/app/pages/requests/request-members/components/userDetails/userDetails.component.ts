@@ -28,7 +28,6 @@ export class UserDetailsComponent implements OnInit {
   getUserInfo() {
     this.membersRequestService.getUserById(this.id).subscribe((response: Response) => {
       this.userInfo = response.responseContent;
-      console.log(response.responseContent);
     });
   }
 

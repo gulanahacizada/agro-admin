@@ -29,8 +29,8 @@ export class EditNewComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
   ) {
-  this.id = this.activateRoute.snapshot.params.id;
-  this.langList = [
+    this.id = this.activateRoute.snapshot.params.id;
+    this.langList = [
       { label: 'Az', value: '1' },
       { label: 'Ru', value: '2' },
       { label: 'En', value: '3' },
@@ -45,7 +45,6 @@ export class EditNewComponent implements OnInit {
 
   onSelectLang(event) {
     this.selectLang = event.value;
-    console.log(this.selectLang);
   }
 
   clean(obj) {
@@ -70,7 +69,6 @@ export class EditNewComponent implements OnInit {
         body_ru: this.newInfo.body_ru,
         body_en: this.newInfo.body_en,
       });
-      console.log(this.newInfo);
     });
   }
 
@@ -85,7 +83,7 @@ export class EditNewComponent implements OnInit {
       body_az: ['', Validators.required],
       body_ru: [''],
       body_en: [''],
-      image: []
+      image: [],
     });
   }
 
@@ -111,7 +109,6 @@ export class EditNewComponent implements OnInit {
 
   onSubmit() {
     if (this.newEditForm.valid) {
-      console.log(this.newEditForm.value);
       this.newServices.editNews(this.newEditForm.value, this.id, this.file).subscribe(() => {
         this.router.navigate(['/news']);
       });
