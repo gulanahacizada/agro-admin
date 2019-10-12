@@ -36,8 +36,7 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.loginForm.valid) {
       const data = Object.assign({}, this.loginForm.value);
-      console.log(data);
-      this.appService.login(data).subscribe( (response: Response) => {
+      this.appService.login(data).subscribe((response: Response) => {
         if (response.responseCode == 1) {
           localStorage.setItem('acc_jwt', response.responseContent.access_token);
           window.location.href = '/home';

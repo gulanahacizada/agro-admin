@@ -14,14 +14,14 @@ export class KindsService extends AppService{
 
 
   public getAllSubCategory( params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_ALL_CATEGORY, params);
+    return this.get(this.http, this.CATEGORY, params);
   }
 
   public getKind( params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_ALL_KIND, params);
+    return this.get(this.http, this.KIND, params);
   }
 
   public addKind( params: any = {}): Observable<any> {
-    return this.post(this.http, this.ADD_KIND, params);
+    return this.post(this.http, this.KIND, params);
   }
 }

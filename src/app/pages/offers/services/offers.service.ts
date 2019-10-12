@@ -13,11 +13,11 @@ export class OffersService extends AppService {
   }
 
   public getAllDialogs(params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_ALL_CONTACT_OFFERS_FOR_ADMIN, params);
+    return this.get(this.http, this.ADMIN_DIALOGS, params);
   }
 
   public getDialogById( params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_CONTACT_OFFERS_BY_ID_FOR_ADMIN + '/' + params);
+    return this.get(this.http, this.ADMIN_DIALOGS + '/' + params);
   }
 
 }

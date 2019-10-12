@@ -26,21 +26,20 @@ export class PakcageComponent implements OnInit {
   getAllPackeg() {
     this.packegService.getAllPackeg().subscribe((response: Response) => {
       this.packeges = response.responseContent;
-      console.log(this.packeges);
     });
   }
 
   createAddPackegForm() {
     this.addPackegForm = this.fb.group({
-      name_az:     [, Validators.required],
-      name_ru:     [, Validators.required],
-      name_en:     [, Validators.required],
+      name_az: [, Validators.required],
+      name_ru: [, Validators.required],
+      name_en: [, Validators.required],
     });
   }
 
   onSubmit() {
     if (this.addPackegForm.valid) {
-      this.packegService.addPackeg(this.addPackegForm.value).subscribe( () => {
+      this.packegService.addPackeg(this.addPackegForm.value).subscribe(() => {
         this.addPackegForm.reset();
         this.getAllPackeg();
       });

@@ -26,21 +26,20 @@ export class QualityComponent implements OnInit {
   getAllQuality() {
     this.qualityService.getAllQuality().subscribe((response: Response) => {
       this.qualityes = response.responseContent;
-      console.log(this.qualityes);
     });
   }
 
   createAddQualityForm() {
     this.addQualityForm = this.fb.group({
-      name_az:     [, Validators.required],
-      name_ru:     [, Validators.required],
-      name_en:     [, Validators.required],
+      name_az: [, Validators.required],
+      name_ru: [, Validators.required],
+      name_en: [, Validators.required],
     });
   }
 
   onSubmit() {
     if (this.addQualityForm.valid) {
-      this.qualityService.addQuality(this.addQualityForm.value).subscribe( () => {
+      this.qualityService.addQuality(this.addQualityForm.value).subscribe(() => {
         this.addQualityForm.reset();
         this.getAllQuality();
       });

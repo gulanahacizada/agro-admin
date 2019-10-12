@@ -13,11 +13,11 @@ export class RequestsContactService extends AppService {
   }
 
   public getAllContactOffers(params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_ALL_CONTACT_OFFERS, params);
+    return this.get(this.http, this.OFFERS, params);
   }
 
   public getOfferById(params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_CONTACT_OFFERS_BY_ID + '/' + params);
+    return this.get(this.http, this.OFFERS + '/' + params);
   }
 
 

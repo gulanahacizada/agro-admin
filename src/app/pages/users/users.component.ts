@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
   constructor(
     private userService: UsersService,
 
-  ) { 
+  ) {
     this.membersType = [
       { label: 'Bütün üzvlər', value: '2' },
       { label: 'Fiziki şəxslər', value: '0' },
@@ -41,25 +41,25 @@ export class UsersComponent implements OnInit {
   }
 
   getAllUsers() {
-    this.userService.getAllUsers({page: this.pagination.page, per_page: this.pagination.per_page, is_company: this.selectType})
-    .subscribe((response: Response) => {
-      this.usersList = response.responseContent.data;
-      this.pagination.per_page = response.responseContent.per_page;
-      this.pagination.total = response.responseContent.total;
-    });
+    this.userService.getAllUsers({ page: this.pagination.page, per_page: this.pagination.per_page, is_company: this.selectType })
+      .subscribe((response: Response) => {
+        this.usersList = response.responseContent.data;
+        this.pagination.per_page = response.responseContent.per_page;
+        this.pagination.total = response.responseContent.total;
+      });
   }
 
   filterUser() {
-    this.count ++;
+    this.count++;
     if (this.count == 1) {
       this.pagination.page = 1;
     }
-    this.userService.getAllUsers({like: this.serchValue, page: this.pagination.page, per_page: this.pagination.per_page})
-    .subscribe((response: Response) => {
-      this.usersList = response.responseContent.data;
-      this.pagination.per_page = response.responseContent.per_page;
-      this.pagination.total = response.responseContent.total;
-    });
+    this.userService.getAllUsers({ like: this.serchValue, page: this.pagination.page, per_page: this.pagination.per_page })
+      .subscribe((response: Response) => {
+        this.usersList = response.responseContent.data;
+        this.pagination.per_page = response.responseContent.per_page;
+        this.pagination.total = response.responseContent.total;
+      });
   }
 
   paginate(e) {

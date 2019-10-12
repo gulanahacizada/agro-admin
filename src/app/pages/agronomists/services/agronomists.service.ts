@@ -13,7 +13,7 @@ export class AgronomistsService extends AppService {
   }
 
   public getAllAgronoms(params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_ALL_AGRONOMS, params);
+    return this.get(this.http, this.AGRONOMS, params);
   }
 
   createAgronom(  agronom: any, file: File): Observable<HttpEvent<any>> {
@@ -26,7 +26,7 @@ export class AgronomistsService extends AppService {
     if (agronom.title_en) {
       formData.append('title_en', agronom.title_en);
     }
- 
+
     formData.append('description_az', agronom.description_az);
     if (agronom.description_ru) {
       formData.append('description_ru', agronom.description_ru);
@@ -62,7 +62,7 @@ export class AgronomistsService extends AppService {
     if (agronom.title_en) {
       formData.append('title_en', agronom.title_en);
     }
- 
+
     formData.append('description_az', agronom.description_az);
     if (agronom.description_ru) {
       formData.append('description_ru', agronom.description_ru);
@@ -90,10 +90,10 @@ export class AgronomistsService extends AppService {
   }
 
   public getAgronomById( params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_AGRONOMS_BY_ID + '/' + params);
+    return this.get(this.http, this.AGRONOMS + '/' + params);
   }
 
   public deleteAgronomById(params: any = {}): Observable <any> {
-    return this.post(this.http, this.GET_AGRONOMS_BY_ID + '/' + params + '/delete', null);
+    return this.post(this.http, this.AGRONOMS + '/' + params + '/delete', null);
   }
 }

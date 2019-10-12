@@ -13,14 +13,14 @@ export class RequestMembersService  extends AppService {
   }
 
   public getAllNewUser(params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_ALL_NEW_USER_FOR_ADMIN, params);
+    return this.get(this.http, this.USER_ADMIN_NEW, params);
   }
 
   public getUserById(params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_BY_ID_USER_FOR_ADMIN + '/' + params);
+    return this.get(this.http, this.USER_ADMIN + '/' + params);
   }
 
   public changeStatus(params: any = {}): Observable<any> {
-    return this.post(this.http, this.CHANGE_USER_STATUS + '/' + params, null);
+    return this.post(this.http, this.USER_STATUS + '/' + params, null);
   }
 }

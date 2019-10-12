@@ -33,7 +33,6 @@ export class KindsComponent implements OnInit {
   getAllKind() {
     this.kindService.getKind().subscribe((response: Response) => {
       this.kinds = response.responseContent;
-      console.log(this.kinds);
     });
   }
 
@@ -57,27 +56,25 @@ export class KindsComponent implements OnInit {
 
   createAddKindForm() {
     this.addKindForm = this.fb.group({
-      name_az:     [, Validators.required],
-      name_ru:     [, Validators.required],
-      name_en:     [, Validators.required],
+      name_az: [, Validators.required],
+      name_ru: [, Validators.required],
+      name_en: [, Validators.required],
       category_id: [, Validators.required],
     });
   }
 
   onSubmit() {
     if (this.addKindForm.valid) {
-      console.log(this.addKindForm.value);
-      this.kindService.addKind(this.addKindForm.value).subscribe( () => {
+      this.kindService.addKind(this.addKindForm.value).subscribe(() => {
         this.addKindForm.reset();
         this.getAllKind();
       });
     }
-
   }
 
   addKind() {
     if (this.addKindForm.valid) {
-      this.kindService.addKind(this.addKindForm.value).subscribe( () => {
+      this.kindService.addKind(this.addKindForm.value).subscribe(() => {
         this.addKindForm.reset();
         this.getAllKind();
       });

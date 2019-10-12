@@ -13,7 +13,7 @@ export class AboutService extends AppService {
   }
 
   public getAllAbout(params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_ALL_ABOUT, params);
+    return this.get(this.http, this.ABOUT, params);
   }
 
   createAbout(about: any, file: File): Observable<HttpEvent<any>> {
@@ -74,7 +74,7 @@ export class AboutService extends AppService {
   }
 
   public getAboutById(params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_ABOUT_BY_ID + '/' + params);
+    return this.get(this.http, this.ABOUT + '/' + params);
   }
 
 }

@@ -1,81 +1,83 @@
 <div class="panel">
 
-    <div class="panel-header p-20">
-        <h1 class="panel-title bold">
-            <i aria-hidden="true" class="icon-users mr-10"></i>
-            Üzvlər
-        </h1>
-    </div>
-    <div class="p-20 pt-10 pb-10 bg-gray">
-        <div class="row as-5">
-            <div class="col xl-2 lg-3 md-3 sm-4 xs-4">
-                <label for="types" class="m-0 shadow w-100p">
-                        <p-dropdown [options]="membersType" (onChange)="onSelectType($event)" class="input custom inline-table">
-                            </p-dropdown>
-                </label>
-            </div>
-            <div class="col xl-3 lg-4 md-4 sm-6 xs-6 ml-auto">
-                <div class="input-group shadow">
-                        <input [(ngModel)]="serchValue" type="search" class="input border-0 radius-0" placeholder="Axtar...">
-                        <button (click)="filterUser()" class="btn bg-white border-0 radius-0" aria-label="Axtar">
-                            <i aria-hidden="true" class="icon-search v-align-middle"></i>
-                        </button>
-                </div>
-            </div>
-            <div class="col xl-1 lg-2 md-2 sm-3 xs-3">
-                    <a (click)="resetSerch()" class="btn bg-orange w-100p shadow border-0">
-                       Reset
-                    </a>
-                </div>
+  <div class="panel-header p-20">
+    <h1 class="panel-title bold">
+      <i aria-hidden="true" class="icon-users mr-10"></i>
+      Üzvlər
+    </h1>
+  </div>
+  <div class="p-20 pt-10 pb-10 bg-gray">
+    <div class="row as-5">
+      <div class="col xl-2 lg-3 md-3 sm-4 xs-4">
+        <label for="types" class="m-0 shadow w-100p">
+          <p-dropdown [options]="membersType" (onChange)="onSelectType($event)" class="input custom inline-table">
+          </p-dropdown>
+        </label>
+      </div>
+      <div class="col xl-3 lg-4 md-4 sm-6 xs-6 ml-auto">
+        <div class="input-group shadow">
+          <input [(ngModel)]="serchValue" type="search" class="input border-0 radius-0" placeholder="Axtar...">
+          <button (click)="filterUser()" class="btn bg-white border-0 radius-0" aria-label="Axtar">
+            <i aria-hidden="true" class="icon-search v-align-middle"></i>
+          </button>
         </div>
+      </div>
+      <div class="col xl-1 lg-2 md-2 sm-3 xs-3">
+        <a (click)="resetSerch()" class="btn bg-orange w-100p shadow border-0">
+          Reset
+        </a>
+      </div>
     </div>
+  </div>
 
-    <div class="panel-body table-responsive m-0 p-0 border-0 o-auto">
-        <table class="table bordered hovered">
-            <thead class="no-wrap">
-                <tr>
-                    <th>№</th>
-                    <th>Adı</th>
-                    <th>Tipi</th>
-                    <th>Əlaqə</th>
-                    <th>Yaranma tarixi</th>
-                    <th colspan="2">Əməliyyatlar</th>
-                </tr>
-            </thead>
-            <tbody class="text-center">
-                <tr *ngFor="let user of usersList; let i=index">
-                    <td> {{i+1}} </td>
-                    <td> {{user?.name}} </td>
-                    <td>
-                        <div [ngSwitch]="user?.is_company">
+  <div class="panel-body table-responsive m-0 p-0 border-0 o-auto">
+    <table class="table bordered hovered">
+      <thead class="no-wrap">
+        <tr>
+          <th>№</th>
+          <th>Adı</th>
+          <th>Tipi</th>
+          <th>Əlaqə</th>
+          <th>Yaranma tarixi</th>
+          <th colspan="2">Əməliyyatlar</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let user of usersList; let i=index">
+          <td> {{i+1}} </td>
+          <td> {{user?.name}} </td>
+          <td>
+            <div [ngSwitch]="user?.is_company">
 
-                            <div *ngSwitchCase="1">
-                                Hüquqi şəxs
-                            </div>
-                            <div *ngSwitchCase="2" >
-                                Fiziki şəxs
-                            </div>
-                        </div>
-                    </td>
-                    <td>{{user?.contacts[i]?.contact}}</td>
-                    <td>{{user?.created_at | date: 'dd/MM/yyyy'}}</td>
-                    <td>
-                        <a [routerLink]="[ 'details', user?.id ]" rel="external" aria-label="Bax" title="Bax" class="btn xs circle bg-white shadow border-0">
-                            <i aria-hidden="true" class="icon-eye v-align-middle"></i>
-                        </a>
-                    </td>
-                    <td class="no-wrap">
-                        <a  [routerLink]="[ 'edit', user?.id ]" aria-label="Redaktə et" title="Redaktə et"
-                            class="btn xs circle bg-blue dark shadow border-0">
-                            <i aria-hidden="true" class="icon-pen-5 v-align-middle"></i>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+              <div *ngSwitchCase="1">
+                Hüquqi şəxs
+              </div>
+              <div *ngSwitchCase="2">
+                Fiziki şəxs
+              </div>
+            </div>
+          </td>
+          <td>{{user?.contacts[i]?.contact}}</td>
+          <td>{{user?.created_at | date: 'dd/MM/yyyy'}}</td>
+          <td>
+            <a [routerLink]="[ 'details', user?.id ]" rel="external" aria-label="Bax" title="Bax"
+              class="btn xs circle bg-white shadow border-0">
+              <i aria-hidden="true" class="icon-eye v-align-middle"></i>
+            </a>
+          </td>
+          <td class="no-wrap">
+            <a [routerLink]="[ 'edit', user?.id ]" aria-label="Redaktə et" title="Redaktə et"
+              class="btn xs circle bg-blue dark shadow border-0">
+              <i aria-hidden="true" class="icon-pen-5 v-align-middle"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="panel-footer">
-            <p-paginator [rows]="pagination?.per_page" [totalRecords]="pagination?.total" (onPageChange)="paginate($event)"></p-paginator>
-        </div>
+  <div class="panel-footer">
+    <p-paginator *ngIf="usersList?.length" [rows]="pagination?.per_page" [totalRecords]="pagination?.total"
+      (onPageChange)="paginate($event)"></p-paginator>
+  </div>
 </div>

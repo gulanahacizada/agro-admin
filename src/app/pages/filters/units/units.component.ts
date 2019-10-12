@@ -26,21 +26,20 @@ export class UnitsComponent implements OnInit {
   getAllUnits() {
     this.unitService.getAllUnits().subscribe((response: Response) => {
       this.units = response.responseContent;
-      console.log(this.units);
     });
   }
 
   createAddUnitForm() {
     this.addUnitForm = this.fb.group({
-      name_az:     [, Validators.required],
-      name_ru:     [, Validators.required],
-      name_en:     [, Validators.required],
+      name_az: [, Validators.required],
+      name_ru: [, Validators.required],
+      name_en: [, Validators.required],
     });
   }
 
   onSubmit() {
     if (this.addUnitForm.valid) {
-      this.unitService.addUnit(this.addUnitForm.value).subscribe( () => {
+      this.unitService.addUnit(this.addUnitForm.value).subscribe(() => {
         this.addUnitForm.reset();
         this.getAllUnits();
       });

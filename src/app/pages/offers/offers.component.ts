@@ -40,13 +40,12 @@ export class OffersComponent implements OnInit {
   }
 
   getAllDialogs() {
-    this.offerService.getAllDialogs({status: this.selectType, page: this.pagination.page, per_page: this.pagination.per_page})
-    .subscribe((response: Response) => {
-      console.log(response.responseContent.data);
-      this.dialogList = response.responseContent.data;
-      this.pagination.per_page = response.responseContent.per_page;
-      this.pagination.total = response.responseContent.total;
-    });
+    this.offerService.getAllDialogs({ status: this.selectType, page: this.pagination.page, per_page: this.pagination.per_page })
+      .subscribe((response: Response) => {
+        this.dialogList = response.responseContent.data;
+        this.pagination.per_page = response.responseContent.per_page;
+        this.pagination.total = response.responseContent.total;
+      });
   }
 
   paginate(e) {

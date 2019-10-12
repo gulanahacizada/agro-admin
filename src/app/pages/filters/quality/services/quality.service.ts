@@ -13,10 +13,10 @@ export class QualityService extends AppService{
   }
 
   public getAllQuality( params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_ALL_QUALITY, params);
+    return this.get(this.http, this.QUALITY, params);
   }
 
   public addQuality( params: any = {}): Observable<any> {
-    return this.post(this.http, this.ADD_QUALITY, params);
+    return this.post(this.http, this.QUALITY, params);
   }
 }
