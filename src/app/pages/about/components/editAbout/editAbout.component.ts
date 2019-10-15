@@ -30,13 +30,13 @@ export class EditAboutComponent implements OnInit {
   ) {
     this.id = this.activateRoute.snapshot.params.id;
     this.langList = [
-      {label: 'Az', value: '1'},
-      {label: 'Ru', value: '2'},
-      {label: 'En', value: '3'},
-  ];
-   }
+      { label: 'Az', value: '1' },
+      { label: 'Ru', value: '2' },
+      { label: 'En', value: '3' },
+    ];
+  }
 
-   onSelectLang(event) {
+  onSelectLang(event) {
     this.selectLang = event.value;
     console.log(this.selectLang);
   }
@@ -50,13 +50,13 @@ export class EditAboutComponent implements OnInit {
 
   createAboutAddForm() {
     this.editAboutForm = this.fb.group({
-     title_az: ['', Validators.required],
-     title_en: [''],
-     title_ru: [''],
-     body_az: ['', Validators.required],
-     body_ru: [''],
-     body_en: [''],
-     image: []
+      title_az: ['', Validators.required],
+      title_en: [''],
+      title_ru: [''],
+      body_az: ['', Validators.required],
+      body_ru: [''],
+      body_en: [''],
+      image: []
     });
   }
 
@@ -101,8 +101,10 @@ export class EditAboutComponent implements OnInit {
   onSubmit() {
     if (this.editAboutForm.valid) {
       console.log(this.editAboutForm.value);
-      this.aboutService.editAbout(this.editAboutForm.value, this.id, this.file).subscribe(() => {
-        this.router.navigate(['/about']);
+      this.aboutService.editAbout(this.editAboutForm.value, this.id, this.file).subscribe((res: any) => {
+        if (res.status == 200) {
+          this.router.navigate(['/about']);
+        }
       });
     }
   }

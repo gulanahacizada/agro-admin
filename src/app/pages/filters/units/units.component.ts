@@ -39,9 +39,11 @@ export class UnitsComponent implements OnInit {
 
   onSubmit() {
     if (this.addUnitForm.valid) {
-      this.unitService.addUnit(this.addUnitForm.value).subscribe(() => {
-        this.addUnitForm.reset();
-        this.getAllUnits();
+      this.unitService.addUnit(this.addUnitForm.value).subscribe((res: any) => {
+        if (res.responseCode == 1) {
+          this.addUnitForm.reset();
+          this.getAllUnits();
+        }
       });
     }
   }

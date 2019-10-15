@@ -65,9 +65,11 @@ export class KindsComponent implements OnInit {
 
   onSubmit() {
     if (this.addKindForm.valid) {
-      this.kindService.addKind(this.addKindForm.value).subscribe(() => {
-        this.addKindForm.reset();
-        this.getAllKind();
+      this.kindService.addKind(this.addKindForm.value).subscribe((res: any) => {
+        if (res.responseCode == 1) {
+          this.addKindForm.reset();
+          this.getAllKind();
+        }
       });
     }
   }

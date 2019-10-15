@@ -84,6 +84,7 @@ export class EditNewComponent implements OnInit {
       body_ru: [''],
       body_en: [''],
       image: [],
+      navigatorUrl: 'users'
     });
   }
 
@@ -109,15 +110,19 @@ export class EditNewComponent implements OnInit {
 
   onSubmit() {
     if (this.newEditForm.valid) {
-      this.newServices.editNews(this.newEditForm.value, this.id, this.file).subscribe(() => {
-        this.router.navigate(['/news']);
+      this.newServices.editNews(this.newEditForm.value, this.id, this.file).subscribe((res: any) => {
+        if (res.status == 200) {
+          this.router.navigate(['/news']);
+        }
       });
     }
   }
 
   deleteNew() {
-    this.newServices.deleteNewById(this.newInfo.id).subscribe(() => {
-      this.router.navigate(['/news']);
+    this.newServices.deleteNewById(this.newInfo.id).subscribe((res) => {
+      if (res.responseCode == 1) {
+        this.router.navigate(['/news']);
+      }
     });
   }
 

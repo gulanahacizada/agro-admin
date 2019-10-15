@@ -39,9 +39,11 @@ export class SizeComponent implements OnInit {
 
   onSubmit() {
     if (this.addKalibryForm.valid) {
-      this.kalibryService.addKalibry(this.addKalibryForm.value).subscribe(() => {
-        this.addKalibryForm.reset();
-        this.getAllKalibry();
+      this.kalibryService.addKalibry(this.addKalibryForm.value).subscribe((res: any) => {
+        if (res.responseCode == 1) {
+          this.addKalibryForm.reset();
+          this.getAllKalibry();
+        }
       });
     }
   }

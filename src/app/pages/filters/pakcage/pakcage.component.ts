@@ -39,9 +39,11 @@ export class PakcageComponent implements OnInit {
 
   onSubmit() {
     if (this.addPackegForm.valid) {
-      this.packegService.addPackeg(this.addPackegForm.value).subscribe(() => {
-        this.addPackegForm.reset();
-        this.getAllPackeg();
+      this.packegService.addPackeg(this.addPackegForm.value).subscribe((res: any) => {
+        if (res.responseCode == 1) {
+          this.addPackegForm.reset();
+          this.getAllPackeg();
+        }
       });
     }
   }

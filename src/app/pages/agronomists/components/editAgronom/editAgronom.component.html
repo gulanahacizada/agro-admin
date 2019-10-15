@@ -1,4 +1,4 @@
-<form [formGroup]="agronomEditForm" (ngSubmit)="onSubmit()" class="panel">
+<form [formGroup]="agronomEditForm" class="panel">
   <div class="panel-header p-20">
     <h1 class="panel-title bold float-left">
       <i aria-hidden="true" class="icon-plus mr-10"></i>
@@ -85,7 +85,7 @@
       <i aria-hidden="true" class="icon-trash mr-10"></i>
       Sil
     </button>
-    <button [disabled]="!agronomEditForm.valid" type="submit" class="btn bg-green shadow border-0 float-right"
+    <button [disabled]="!agronomEditForm.valid" (click)="onSubmit()" class="btn bg-green shadow border-0 float-right"
       title="Yadda saxla">
       Yadda saxla
     </button>

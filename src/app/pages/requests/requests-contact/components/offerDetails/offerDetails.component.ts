@@ -28,7 +28,6 @@ export class OfferDetailsComponent implements OnInit {
   getOfferById() {
     this.requestContactService.getOfferById(this.id).subscribe((response: Response) => {
       this.offerInfo = response.responseContent;
-      console.log(this.offerInfo);
     });
   }
 

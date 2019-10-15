@@ -39,9 +39,11 @@ export class QualityComponent implements OnInit {
 
   onSubmit() {
     if (this.addQualityForm.valid) {
-      this.qualityService.addQuality(this.addQualityForm.value).subscribe(() => {
-        this.addQualityForm.reset();
-        this.getAllQuality();
+      this.qualityService.addQuality(this.addQualityForm.value).subscribe((res: any) => {
+        if (res.responseCode == 1) {
+          this.addQualityForm.reset();
+          this.getAllQuality();
+        }
       });
     }
   }

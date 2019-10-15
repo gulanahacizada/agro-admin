@@ -1,4 +1,4 @@
-<form [formGroup]="newEditForm" (ngSubmit)="onSubmit()" class="panel">
+<form [formGroup]="newEditForm" class="panel">
   <div class="panel-header p-20">
     <h1 class="panel-title bold float-left">
       <i aria-hidden="true" class="icon-plus mr-10"></i>
@@ -86,7 +86,7 @@
       <i aria-hidden="true" class="icon-trash mr-10"></i>
       Sil
     </button>
-    <button type="submit" class="btn bg-green shadow border-0 float-right" title="Yadda saxla">
+    <button type="submit" (click)="onSubmit()" class="btn bg-green shadow border-0 float-right" title="Yadda saxla">
       Yadda saxla
     </button>
   </div>
