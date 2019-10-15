@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AppService } from 'src/app/services/app/app.service';
 import { HttpClient, HttpEvent, HttpParams, HttpRequest} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { prop } from 'src/environments/properties';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class AgronomistsService extends AppService {
   }
 
   createAgronom(  agronom: any, file: File): Observable<HttpEvent<any>> {
-    const url = 'http://test.agrobirja.az/api/v1/agronoms';
+    const url = 'http://' +  prop.host +  '/agronoms';
     const formData = new FormData();
     formData.append('title_az', agronom.title_az);
     if (agronom.title_ru) {
@@ -53,7 +54,7 @@ export class AgronomistsService extends AppService {
 
 
   editAgronom(agronom: any, id: any, file: File): Observable<HttpEvent<any>> {
-    const url = 'http://test.agrobirja.az/api/v1/agronoms' + '/' + id + '/update';
+    const url = 'http://' +  prop.host +  '/agronoms' + '/' + id + '/update';
     const formData = new FormData();
     formData.append('title_az', agronom.title_az);
     if (agronom.title_ru) {
