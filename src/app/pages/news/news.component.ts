@@ -29,26 +29,26 @@ export class NewsComponent implements OnInit {
   }
 
   gelAllNews() {
-    this.newService.getAllNews({page: this.pagination.page, per_page: this.pagination.per_page})
-    .subscribe((response: any) => {
-      this.newsList = response.responseContent.data;
-      this.pagination.per_page = response.responseContent.per_page;
-      this.pagination.total = response.responseContent.total;
-    });
+    this.newService.getAllNews({ page: this.pagination.page, per_page: this.pagination.per_page })
+      .subscribe((response: any) => {
+        this.newsList = response.responseContent.data;
+        this.pagination.per_page = response.responseContent.per_page;
+        this.pagination.total = response.responseContent.total;
+      });
   }
 
   filterNew() {
-    this.count ++;
+    this.count++;
     if (this.count == 1) {
       this.pagination.page = 1;
     }
     this.newService.getAllNews(
-      {like: this.serchValue, page: this.pagination.page, per_page: this.pagination.per_page} )
+      { like: this.serchValue, page: this.pagination.page, per_page: this.pagination.per_page })
       .subscribe((response: Response) => {
-      this.newsList = response.responseContent.data;
-      this.pagination.per_page = response.responseContent.per_page;
-      this.pagination.total = response.responseContent.total;
-    });
+        this.newsList = response.responseContent.data;
+        this.pagination.per_page = response.responseContent.per_page;
+        this.pagination.total = response.responseContent.total;
+      });
   }
 
   paginate(e) {

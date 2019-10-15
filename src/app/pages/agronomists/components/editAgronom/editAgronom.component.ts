@@ -28,13 +28,14 @@ export class EditAgronomComponent implements OnInit {
     private activateRoute: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
-  ) { this.id = this.activateRoute.snapshot.params.id;
-      this.langList = [
+  ) {
+    this.id = this.activateRoute.snapshot.params.id;
+    this.langList = [
       { label: 'Az', value: '1' },
       { label: 'Ru', value: '2' },
       { label: 'En', value: '3' },
     ];
-   }
+  }
 
   ngOnInit() {
     this.createAgronomEditForm();
@@ -103,15 +104,19 @@ export class EditAgronomComponent implements OnInit {
   onSubmit() {
     if (this.agronomEditForm.valid) {
       console.log(this.agronomEditForm.value);
-      this.agronomService.editAgronom(this.agronomEditForm.value, this.id, this.file).subscribe(() => {
-        this.router.navigate(['/agronoms']);
+      this.agronomService.editAgronom(this.agronomEditForm.value, this.id, this.file).subscribe((res: any) => {
+        if (res.status == 200) {
+          this.router.navigate(['/agronoms']);
+        }
       });
     }
   }
 
   deleteAgronom() {
-    this.agronomService.deleteAgronomById(this.agronomInfo.id).subscribe(() => {
-      this.router.navigate(['/agronoms']);
+    this.agronomService.deleteAgronomById(this.agronomInfo.id).subscribe((res) => {
+      if (res.responseCode == 1) {
+        this.router.navigate(['/agronoms']);
+      }
     });
   }
 

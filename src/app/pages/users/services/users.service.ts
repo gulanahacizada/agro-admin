@@ -13,18 +13,18 @@ export class UsersService  extends AppService {
   }
 
   public getAllUsers(params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_ALL_USERS, params);
+    return this.get(this.http, this.USERS, params);
   }
 
   public getUserById(params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_ALL_USERS + '/' + params);
+    return this.get(this.http, this.USERS + '/' + params);
   }
 
   public changeStatus(params: any = {}): Observable <any> {
-    return this.post(this.http, this.CHANGE_USER_STATUS + '/' + params, null);
+    return this.post(this.http, this.USER_STATUS + '/' + params, null);
   }
 
   public updateUser(id: any = {}, params = {}): Observable<any> {
-    return this.post(this.http, this.UPDATE_USER_FOR_ADMIN + '/' + id + '/update', params);
+    return this.post(this.http, this.USER_ADMIN + '/' + id + '/update', params);
   }
 }

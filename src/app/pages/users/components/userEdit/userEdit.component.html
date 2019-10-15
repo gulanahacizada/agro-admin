@@ -1,45 +1,43 @@
 <form [formGroup]="userUpdateForm" (ngSubmit)="onSubmit()" class="panel">
-
-    <div class="panel-header p-20">
-        <h1 class="panel-title bold float-left">
-            <i aria-hidden="true" class="icon-plus mr-10"></i>
-            Şirkət haqqinda
-        </h1>
-    </div>
-
-    <div class="pt-20 pl-20 pr-20 bg-gray">
-        <div class="row as-10 xs-5">
-
-            <div class="col as-12 xl-6 mb-20">
-                <label>Şirkət haqqinda</label>
-                <div class="shadow">
-                    <p-editor [style]="{'height':'320px'}" formControlName="description_az" placeholder="Şirkət haqqinda az"></p-editor>
-                </div>
-            </div>
-            <div class="col as-12 xl-6 mb-20">
-                <label>Şirkət haqqinda ru</label>
-                <div class="shadow">
-                    <p-editor [style]="{'height':'320px'}" formControlName="description_ru" placeholder="Şirkət haqqinda ru"></p-editor>
-                </div>
-            </div>
-            <div class="col as-12 xl-6 mb-20">
-                <label>Şirkət haqqinda en</label>
-                <div class="shadow">
-                    <p-editor [style]="{'height':'320px'}" formControlName="description_en" placeholder="Şirkət haqqinda en"></p-editor>
-                </div>
-            </div>
+  <div class="panel-header p-20">
+    <h1 class="panel-title bold float-left">
+      <i aria-hidden="true" class="icon-plus mr-10"></i>
+      Şirkət haqqinda
+    </h1>
+  </div>
+  <div class="pt-20 pl-20 pr-20 bg-gray">
+    <div class="row as-10 xs-5">
+      <div class="col as-12 xl-6 mb-20">
+        <label>Azərbaycan dili</label>
+        <div class="shadow">
+          <p-editor [style]="{'height':'320px'}" formControlName="description_az" placeholder="Şirkət haqqinda məlumat">
+          </p-editor>
         </div>
+      </div>
+      <div class="col as-12 xl-6 mb-20">
+        <label>Rus dili</label>
+        <div class="shadow">
+          <p-editor [style]="{'height':'320px'}" formControlName="description_ru" placeholder="Информация о компании">
+          </p-editor>
+        </div>
+      </div>
+      <div class="col as-12 xl-6 mb-20">
+        <label>İngilis dili</label>
+        <div class="shadow">
+          <p-editor [style]="{'height':'320px'}" formControlName="description_en" placeholder="Company İnformation">
+          </p-editor>
+        </div>
+      </div>
     </div>
-
-    <div class="panel-footer">
-        <!-- <button class="btn bg-red border-0 shadow" title="Sil" data-target-modal="alert-modal">
+  </div>
+  <div class="panel-footer">
+    <!-- <button class="btn bg-red border-0 shadow" title="Sil" data-target-modal="alert-modal">
             <i aria-hidden="true" class="icon-trash mr-10"></i>
             Sil
         </button> -->
-        <button [disabled]="!userUpdateForm.valid"  type="submit" class="btn bg-green shadow border-0 float-right"
-            title="Yadda saxla">
-            Yadda saxla
-        </button>
-    </div>
-
+    <button [disabled]="!userUpdateForm.valid" type="submit" class="btn bg-green shadow border-0 float-right"
+      title="Yadda saxla">
+      Yadda saxla
+    </button>
+  </div>
 </form>

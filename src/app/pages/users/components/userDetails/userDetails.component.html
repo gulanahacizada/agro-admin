@@ -5,9 +5,7 @@
       {{userInfo?.name}}
     </h1>
   </div>
-
   <div class="panel-body p-20">
-
     <div class="row border-bottom pb-5">
       <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
         Voen:
@@ -18,7 +16,6 @@
         </span>
       </div>
     </div>
-
     <div class="row border-bottom pt-10 pb-5">
       <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
         Bank hesabı
@@ -27,7 +24,6 @@
         {{userInfo?.bank_account}}
       </div>
     </div>
-
     <div class="row border-bottom pt-10 pb-5">
       <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
         Telefon:
@@ -44,14 +40,12 @@
         <a href="" rel="external" title="+994773097879" target="_blank">{{email[0]?.contact}}</a>
       </div>
     </div>
-
     <div class="row border-bottom pt-10 pb-5">
       <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
         Tipi:
       </div>
       <div class="col as-9 xs-7 pb-5">
         <div [ngSwitch]="userInfo?.is_company">
-
           <div *ngSwitchCase="1">
             Hüquqi şəxs
           </div>
@@ -66,10 +60,9 @@
         Şirkət haqqında:
       </div>
       <div class="col as-9 xs-7 pb-5" [innerHTML]="userInfo?.description_az">
-       <!-- Description -->
+        <!-- Description -->
       </div>
     </div>
-
     <div class="row border-bottom pt-10 pb-5">
       <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
         Yaranma tarixi:
@@ -78,19 +71,17 @@
         {{userInfo?.created_at| date }}
       </div>
     </div>
-
     <div class="row border-bottom pt-10 pb-5">
       <div class="col as-3 xs-5 bold pb-5 no-wrap pr-15">
         Status:
       </div>
       <div class="col as-9 xs-7 pb-5">
         <div [ngSwitch]="userInfo?.status">
-
           <div *ngSwitchCase="1">
-            activ
+            active
           </div>
           <div *ngSwitchCase="0">
-            passiv
+            passive
           </div>
         </div>
       </div>
@@ -101,24 +92,20 @@
       </div>
       <div class="col as-9 xs-7 pb-5">
         <div [ngSwitch]="userInfo?.verified">
-
           <div *ngSwitchCase="1">
-            activ
+            active
           </div>
           <div *ngSwitchCase="0">
-            passiv
+            passive
           </div>
         </div>
       </div>
     </div>
-
   </div>
-
   <div class="panel-footer">
-        <button (click)="changeStatus()" class="btn bg-red border-0 shadow float-right" title="İmtina et" data-target-modal="alert-modal">
-            Deaktiv et
-        </button>
-
-    </div>
-
+    <button (click)="changeStatus()" class="btn bg-red border-0 shadow float-right" title="İmtina et"
+      data-target-modal="alert-modal">
+      Deaktiv et
+    </button>
+  </div>
 </div>

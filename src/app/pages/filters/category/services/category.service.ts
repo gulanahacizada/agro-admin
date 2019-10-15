@@ -13,10 +13,10 @@ export class CategoryService  extends AppService {
   }
 
   public getCategory( params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_ALL_CATEGORY, params);
+    return this.get(this.http, this.CATEGORY, params);
   }
 
   public addCategory( params: any = {}): Observable<any> {
-    return this.post(this.http, this.ADD_CATEGORY, params);
+    return this.post(this.http, this.CATEGORY, params);
   }
 }

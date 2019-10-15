@@ -1,79 +1,65 @@
 <div class="panel">
-
-    <div class="panel-header p-20">
-        <h1 class="panel-title bold">
-            <i aria-hidden="true" class="icon-hand-shake mr-10"></i>
-            Təkliflər
-        </h1>
+  <div class="panel-header p-20">
+    <h1 class="panel-title bold">
+      <i aria-hidden="true" class="icon-hand-shake mr-10"></i>
+      Təkliflər
+    </h1>
+  </div>
+  <div class="p-20 pt-10 pb-10 bg-gray">
+    <div class="row as-5">
+      <div class="col xl-2 lg-3 md-3 sm-4 xs-4">
+        <p-dropdown [options]="dialogType" (onChange)="onSelectType($event)" class="input custom inline-table">
+        </p-dropdown>
+      </div>
     </div>
+  </div>
+  <div class="panel-body table-responsive m-0 p-0 border-0 o-auto">
+    <table class="table bordered hovered">
+      <thead class="no-wrap">
+        <tr>
+          <th>№</th>
+          <th>Təklif verən</th>
+          <th>Təklif alan</th>
+          <th>Məhsul</th>
+          <th>Nəticə</th>
+          <th>Tarix</th>
+          <th>Bax</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let offer of dialogList; let i=index">
+          <td>{{i+1}}</td>
+          <td> {{offer?.user_from?.name}}</td>
+          <td> {{offer?.user_to?.name}} </td>
+          <td> {{offer?.product?.category?.name}} ( {{offer?.product?.kind?.name}} )</td>
+          <td>
+            <div [ngSwitch]="offer?.status">
 
-    <div class="p-20 pt-10 pb-10 bg-gray">
-        <div class="row as-5">
-            <div class="col xl-2 lg-3 md-3 sm-4 xs-4">
-                    <p-dropdown [options]="dialogType" (onChange)="onSelectType($event)" class="input custom inline-table">
-                        </p-dropdown>
+              <div *ngSwitchCase="2">
+                Gözlenilmədə
+              </div>
+              <div *ngSwitchCase="1">
+                Razılaşmış
+              </div>
+              <div *ngSwitchCase="0">
+                Rəd edilmiş
+              </div>
             </div>
-            <!-- <div class="col xl-3 lg-4 md-4 sm-6 xs-6 ml-auto">
-                <div class="input-group shadow">
-                    <input type="search" class="input border-0 radius-0" placeholder="Axtar...">
-                    <button class="btn bg-white border-0 radius-0" aria-label="Axtar">
-                        <i aria-hidden="true" class="icon-search v-align-middle"></i>
-                    </button>
-                </div>
-            </div> -->
-        </div>
-    </div>
-
-    <div class="panel-body table-responsive m-0 p-0 border-0 o-auto">
-        <table class="table bordered hovered">
-            <thead class="no-wrap">
-            <tr>
-                <th>№</th>
-                <th>Təklif verən</th>
-                <th>Təklif alan</th>
-                <th>Məhsul</th>
-                <th>Nəticə</th>
-                <th>Tarix</th>
-                <th>Bax</th>
-            </tr>
-            </thead>
-            <tbody class="text-center">
-            <tr *ngFor="let offer of dialogList; let i=index">
-                <td>{{i+1}}</td>
-                <td> {{offer?.user_from?.name}}</td>
-                <td> {{offer?.user_to?.name}} </td>
-                <td> {{offer?.product?.category?.name}} ( {{offer?.product?.kind?.name}} )</td>
-                <td>
-                        <div [ngSwitch]="offer?.status">
-
-                                <div *ngSwitchCase="2">
-                                    Gözlenilmədə
-                                </div>
-                                <div *ngSwitchCase="1" >
-                                    Razılaşmış
-                                </div>
-                                <div *ngSwitchCase="0" >
-                                        Rəd edilmiş
-                                    </div>
-                            </div>
-                </td>
-                <td>{{offer?.created_at | date: 'dd/MM/yyyy'}}</td>
-                <td>
-                    <a [routerLink]="[ 'details', offer?.id ]"
-                       rel="external"
-                       aria-label="Bax" title="Bax"
-                       data-toggle="tooltip"
-                       class="btn xs circle bg-white shadow border-0">
-                        <i aria-hidden="true" class="icon-eye v-align-middle"></i>
-                    </a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="panel-footer">
-            <p-paginator [rows]="pagination?.per_page" [totalRecords]="pagination?.total" (onPageChange)="paginate($event)"></p-paginator>
-    </div>
-
+          </td>
+          <td>{{offer?.created_at | date: 'dd/MM/yyyy'}}</td>
+          <td>
+            <a [routerLink]="[ 'details', offer?.id ]" rel="external" aria-label="Bax" title="Bax" data-toggle="tooltip"
+              class="btn xs circle bg-white shadow border-0">
+              <i aria-hidden="true" class="icon-eye v-align-middle"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel-footer">
+    <p-paginator *ngIf="dialogList?.length" [rows]="pagination?.per_page" [totalRecords]="pagination?.total"
+      (onPageChange)="paginate($event)">
+    </p-paginator>
+  </div>
 </div>

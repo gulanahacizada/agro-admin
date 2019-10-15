@@ -32,7 +32,6 @@ export class CategoryComponent implements OnInit {
   getAllCategory() {
     this.categoryService.getCategory().subscribe((response: Response) => {
       this.categoryList = response.responseContent;
-      console.log(this.categoryList);
       this.selectCategoryList = (this.categoryList || []).map((r: any) => ({
         label: r.name,
         value: r.id
@@ -56,10 +55,11 @@ export class CategoryComponent implements OnInit {
   onSubmit() {
     if (this.categoryAddForm.valid) {
       this.clean(this.categoryAddForm.value);
-      console.log(this.categoryAddForm.value);
-      this.categoryService.addCategory(this.categoryAddForm.value).subscribe( () => {
-        this.categoryAddForm.reset();
-        this.getAllCategory();
+      this.categoryService.addCategory(this.categoryAddForm.value).subscribe((res: any) => {
+        if (res.responseCode == 1) {
+          this.categoryAddForm.reset();
+          this.getAllCategory();
+        }
       });
     }
 

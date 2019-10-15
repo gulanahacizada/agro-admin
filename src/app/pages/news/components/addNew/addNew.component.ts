@@ -52,7 +52,8 @@ export class AddNewComponent implements OnInit {
       body_az: ['', Validators.required],
       body_ru: [''],
       body_en: [''],
-      image: []
+      image: [],
+      navigatorUrl: 'users'
     });
   }
 
@@ -78,8 +79,10 @@ export class AddNewComponent implements OnInit {
 
   onSubmit() {
     if (this.addNewsForm.valid) {
-      this.newService.createNews(this.addNewsForm.value, this.file).subscribe(() => {
-        this.router.navigate(['/news']);
+      this.newService.createNews(this.addNewsForm.value, this.file).subscribe((res: any) => {
+        if (res.status == 200) {
+          this.router.navigate(['/news']);
+        }
       });
     }
   }

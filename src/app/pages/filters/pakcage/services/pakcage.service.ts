@@ -13,10 +13,10 @@ export class PakcageService extends AppService{
   }
 
   public getAllPackeg( params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_ALL_PACKEG, params);
+    return this.get(this.http, this.PACKEGE, params);
   }
 
   public addPackeg( params: any = {}): Observable<any> {
-    return this.post(this.http, this.ADD_PACKEG, params);
+    return this.post(this.http, this.PACKEGE, params);
   }
 }

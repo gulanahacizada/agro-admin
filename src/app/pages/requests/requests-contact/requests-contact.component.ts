@@ -40,12 +40,12 @@ export class RequestsContactComponent implements OnInit {
   }
 
   getAllOffers() {
-    this.requestContactService.getAllContactOffers({read: this.selectType, page: this.pagination.page, per_page: this.pagination.per_page})
-    .subscribe((response: Response) => {
-      this.contactOffers = response.responseContent.data;
-      this.pagination.per_page = response.responseContent.per_page;
-      this.pagination.total = response.responseContent.total;
-    });
+    this.requestContactService.getAllContactOffers({ read: this.selectType, page: this.pagination.page, per_page: this.pagination.per_page })
+      .subscribe((response: Response) => {
+        this.contactOffers = response.responseContent.data;
+        this.pagination.per_page = response.responseContent.per_page;
+        this.pagination.total = response.responseContent.total;
+      });
   }
 
   paginate(e) {

@@ -25,7 +25,6 @@ export class AboutComponent implements OnInit {
   getAllAbout() {
     this.aboutService.getAllAbout().subscribe((response: Response) => {
       this.aboutList = response.responseContent;
-      console.log(this.aboutList);
     });
   }
 

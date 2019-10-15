@@ -35,7 +35,6 @@ export class UserEditComponent implements OnInit {
   getUserById() {
     this.userService.getUserById(this.id).subscribe((response: Response) => {
       this.userInfo = response.responseContent;
-      console.log(this.userInfo);
       this.userUpdateForm.patchValue({
         description_az: this.userInfo.description_az,
         description_ru: this.userInfo.description_ru,
@@ -49,6 +48,7 @@ export class UserEditComponent implements OnInit {
       description_az: ['', Validators.required],
       description_ru: [''],
       description_en: [''],
+      navigatorUrl: 'users'
     });
   }
 
@@ -56,7 +56,7 @@ export class UserEditComponent implements OnInit {
     if (this.userUpdateForm.valid) {
       this.userService.updateUser(this.id, this.userUpdateForm.value).subscribe((response: Response) => {
         if (response.responseCode == 1) {
-           this.router.navigate(['/users']);
+          // this.router.navigate(['/users']);
         }
       });
     }

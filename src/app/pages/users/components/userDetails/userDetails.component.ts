@@ -30,7 +30,6 @@ export class UserDetailsComponent implements OnInit {
   getUserById() {
     this.userService.getUserById(this.id).subscribe((response: Response) => {
       this.userInfo = response.responseContent;
-      console.log(this.userInfo);
       this.phone = this.userInfo.contacts.filter(e => e.type == 0);
       this.email = this.userInfo.contacts.filter(e => e.type == 1);
     });

@@ -26,11 +26,11 @@ export class AddAboutComponent implements OnInit {
     private router: Router,
   ) {
     this.langList = [
-      {label: 'Az', value: '1'},
-      {label: 'Ru', value: '2'},
-      {label: 'En', value: '3'},
-  ];
-   }
+      { label: 'Az', value: '1' },
+      { label: 'Ru', value: '2' },
+      { label: 'En', value: '3' },
+    ];
+  }
 
   ngOnInit() {
     this.createAboutAddForm();
@@ -44,13 +44,13 @@ export class AddAboutComponent implements OnInit {
 
   createAboutAddForm() {
     this.addAboutForm = this.fb.group({
-     title_az: ['', Validators.required],
-     title_en: [''],
-     title_ru: [''],
-     body_az: ['', Validators.required],
-     body_ru: [''],
-     body_en: [''],
-     image: []
+      title_az: ['', Validators.required],
+      title_en: [''],
+      title_ru: [''],
+      body_az: ['', Validators.required],
+      body_ru: [''],
+      body_en: [''],
+      image: []
     });
   }
 
@@ -76,8 +76,10 @@ export class AddAboutComponent implements OnInit {
 
   onSubmit() {
     if (this.addAboutForm.valid) {
-      this.aboutService.createAbout(this.addAboutForm.value, this.file).subscribe( () => {
-        this.router.navigate(['/about']);
+      this.aboutService.createAbout(this.addAboutForm.value, this.file).subscribe((res: any) => {
+        if (res.status == 200) {
+          this.router.navigate(['/about']);
+        }
       });
     }
   }

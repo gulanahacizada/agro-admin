@@ -13,10 +13,10 @@ export class SizeService extends AppService{
   }
 
   public getAllKalibry( params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_ALL_KALIBRY, params);
+    return this.get(this.http, this.KALIBRY, params);
   }
 
   public addKalibry( params: any = {}): Observable<any> {
-    return this.post(this.http, this.ADD_KALIBRY, params);
+    return this.post(this.http, this.KALIBRY, params);
   }
 }

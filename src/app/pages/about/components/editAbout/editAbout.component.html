@@ -16,13 +16,13 @@
                 <div class="shadow">
                     <div [ngSwitch]="selectLang">
                         <div *ngSwitchCase="1">
-                            <p-editor [style]="{'height':'320px'}" placeholder="Haqqımızda AZ" formControlName="body_az"></p-editor>
+                            <p-editor [style]="{'height':'320px'}" placeholder="Azərbaycan Dili" formControlName="body_az"></p-editor>
                         </div>
                         <div *ngSwitchCase="2">
-                            <p-editor [style]="{'height':'320px'}" placeholder="Haqqımızda RU"  formControlName="body_ru"></p-editor>
+                            <p-editor [style]="{'height':'320px'}" placeholder="Rus Dili"  formControlName="body_ru"></p-editor>
                         </div>
                         <div *ngSwitchCase="3">
-                            <p-editor [style]="{'height':'320px'}" placeholder="Haqqımızda EN"  formControlName="body_en" ></p-editor>
+                            <p-editor [style]="{'height':'320px'}" placeholder="İngilis Dili"  formControlName="body_en" ></p-editor>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                     <label>Haqqımızda başlıgı</label>
 
                     <div [ngSwitch]="selectLang">
-                
+
                         <div *ngSwitchCase="1">
                             <input formControlName="title_az" class="input" type="text" placeholder="Haqqımızda başlıgı AZ">
                         </div>

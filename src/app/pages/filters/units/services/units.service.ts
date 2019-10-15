@@ -13,10 +13,10 @@ export class UnitsService extends AppService{
   }
 
   public getAllUnits( params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_ALL_UNİTS, params);
+    return this.get(this.http, this.UNİT, params);
   }
 
   public addUnit( params: any = {}): Observable<any> {
-    return this.post(this.http, this.ADD_UNİT, params);
+    return this.post(this.http, this.UNİT, params);
   }
 }

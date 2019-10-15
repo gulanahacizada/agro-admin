@@ -13,9 +13,9 @@ export class NewsService extends AppService {
   }
 
   public getAllNews(params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_ALL_NEWS, params);
+    return this.get(this.http, this.NEWS, params);
   }
-  
+
   createNews(news: any, file: File): Observable<HttpEvent<any>> {
     const url = 'http://test.agrobirja.az/api/v1/news';
     const formData = new FormData();
@@ -89,11 +89,11 @@ export class NewsService extends AppService {
   }
 
   public getNewById(params: any = {}): Observable<any> {
-    return this.get(this.http, this.GET_NEW_BY_UD + '/' + params);
+    return this.get(this.http, this.NEWS + '/' + params);
   }
 
   public deleteNewById(params: any = {}): Observable <any> {
-    return this.post(this.http, this.GET_NEW_BY_UD + '/' + params + '/delete', null);
+    return this.post(this.http, this.NEWS + '/' + params + '/delete', null);
   }
 
 }

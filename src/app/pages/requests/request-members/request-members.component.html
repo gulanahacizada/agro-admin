@@ -1,68 +1,60 @@
 <div class="panel">
-
-    <div class="panel-header p-20">
-        <h1 class="panel-title bold">
-            <i aria-hidden="true" class="icon-envelope mr-10"></i>
-            Üzvlük müraciətləri
-        </h1>
+  <div class="panel-header p-20">
+    <h1 class="panel-title bold">
+      <i aria-hidden="true" class="icon-envelope mr-10"></i>
+      Üzvlük müraciətləri
+    </h1>
+  </div>
+  <div class="p-20 pt-10 pb-10 bg-gray">
+    <div class="row as-5">
+      <div class="col xl-2 lg-3 md-3 sm-4 xs-4">
+        <label for="types" class="m-0 shadow w-100p">
+          <p-dropdown [options]="usersType" (onChange)="onSelectType($event)" class="input custom inline-table">
+          </p-dropdown>
+        </label>
+      </div>
     </div>
-
-    <div class="p-20 pt-10 pb-10 bg-gray">
-        <div class="row as-5">
-            <div class="col xl-2 lg-3 md-3 sm-4 xs-4">
-                <label for="types" class="m-0 shadow w-100p">
-                    <p-dropdown [options]="usersType" (onChange)="onSelectType($event)" class="input custom inline-table">
-                    </p-dropdown>
-                </label>
+  </div>
+  <div class="panel-body table-responsive m-0 p-0 border-0 o-auto">
+    <table class="table bordered hovered">
+      <thead class="no-wrap">
+        <tr>
+          <th>№</th>
+          <th>Adı</th>
+          <th>Əlaqə</th>
+          <th>Gondərilmə tarixi</th>
+          <th>Tip</th>
+          <th>Əməliyyatlar</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let request of userRequestList; let i=index">
+          <td> {{i+1}} </td>
+          <td> {{request?.name}} </td>
+          <td> {{request?.contacts[0]?.contact}} </td>
+          <td> {{request?.created_at | date: 'dd/MM/yyyy'}} </td>
+          <td>
+            <div [ngSwitch]="request?.is_company">
+              <div *ngSwitchCase="1">
+                Hüquqi şəxs
+              </div>
+              <div *ngSwitchCase="0">
+                Fiziki şəxs
+              </div>
             </div>
-        </div>
-    </div>
-
-    <div class="panel-body table-responsive m-0 p-0 border-0 o-auto">
-        <table class="table bordered hovered">
-            <thead class="no-wrap">
-            <tr>
-                <th>№</th>
-                <th>Adı</th>
-                <th>Əlaqə</th>
-                <th>Gondərilmə tarixi</th>
-                <th >Tip</th>
-                <th>Əməliyyatlar</th>
-            </tr>
-            </thead>
-            <tbody class="text-center">
-            <tr *ngFor="let request of userRequestList; let i=index">
-                <td> {{i+1}} </td>
-                <td> {{request?.name}} </td>
-                <td> {{request?.contacts[0]?.contact}} </td>
-                <td> {{request?.created_at | date: 'dd/MM/yyyy'}}  </td>
-                <td>
-                    <div [ngSwitch]="request?.is_company">
-
-                        <div *ngSwitchCase="1">
-                            Hüquqi şəxs
-                        </div>
-                        <div *ngSwitchCase="0">
-                          Fiziki şəxs
-                        </div>
-                      </div>
-                </td>
-                <td>
-                    <a [routerLink]="['detail', request?.id ]"
-                       rel="external"
-                       aria-label="Bax" title="Bax"
-                       data-toggle="tooltip"
-                       class="btn xs circle bg-white shadow border-0">
-                        <i aria-hidden="true" class="icon-eye v-align-middle"></i>
-                    </a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="panel-footer">
-            <p-paginator [rows]="pagination?.per_page" [totalRecords]="pagination?.total" (onPageChange)="paginate($event)"></p-paginator>
-    </div>
+          </td>
+          <td>
+            <a [routerLink]="['detail', request?.id ]" rel="external" aria-label="Bax" title="Bax" data-toggle="tooltip"
+              class="btn xs circle bg-white shadow border-0">
+              <i aria-hidden="true" class="icon-eye v-align-middle"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel-footer">
+    <p-paginator *ngIf="userRequestList?.lenght" [rows]="pagination?.per_page" [totalRecords]="pagination?.total"
+      (onPageChange)="paginate($event)"></p-paginator>
+  </div>
 </div>
-

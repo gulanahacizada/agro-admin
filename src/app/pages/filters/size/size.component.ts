@@ -31,17 +31,19 @@ export class SizeComponent implements OnInit {
 
   createAddKalibryForm() {
     this.addKalibryForm = this.fb.group({
-      name_az:     [, Validators.required],
-      name_ru:     [, Validators.required],
-      name_en:     [, Validators.required],
+      name_az: [, Validators.required],
+      name_ru: [, Validators.required],
+      name_en: [, Validators.required],
     });
   }
 
   onSubmit() {
     if (this.addKalibryForm.valid) {
-      this.kalibryService.addKalibry(this.addKalibryForm.value).subscribe( () => {
-        this.addKalibryForm.reset();
-        this.getAllKalibry();
+      this.kalibryService.addKalibry(this.addKalibryForm.value).subscribe((res: any) => {
+        if (res.responseCode == 1) {
+          this.addKalibryForm.reset();
+          this.getAllKalibry();
+        }
       });
     }
   }
