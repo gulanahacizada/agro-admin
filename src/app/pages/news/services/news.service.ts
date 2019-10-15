@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AppService } from 'src/app/services/app/app.service';
 import { HttpClient, HttpEvent, HttpParams, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs/index';
+import { prop } from 'src/environments/properties';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class NewsService extends AppService {
   }
 
   createNews(news: any, file: File): Observable<HttpEvent<any>> {
-    const url = 'http://test.agrobirja.az/api/v1/news';
+    const url = 'http://' +  prop.host + '/news';
     const formData = new FormData();
     formData.append('title_az', news.title_az);
     formData.append('description_az', news.description_az);
@@ -53,7 +54,7 @@ export class NewsService extends AppService {
   }
 
   editNews(news: any, id: any, file: File): Observable<HttpEvent<any>> {
-    const url = 'http://test.agrobirja.az/api/v1/news' + '/' + id + '/update';
+    const url = 'http://' + prop.host + '/news' + '/' + id + '/update';
     const formData = new FormData();
     formData.append('title_az', news.title_az);
     formData.append('description_az', news.description_az);
