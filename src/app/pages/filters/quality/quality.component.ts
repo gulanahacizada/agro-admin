@@ -76,4 +76,9 @@ export class QualityComponent implements OnInit {
     });
   }
 
+  reset() {
+    this.addQualityForm.reset();
+    this.qualityDetail = {};
+  }
+
 }

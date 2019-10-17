@@ -16,6 +16,9 @@ export class CategoryComponent implements OnInit {
   categoryList: Category[];
   selectCategoryList: SelectList[];
   show: boolean;
+  edit = true;
+  // subCategory = true;
+  // mainCategory = true;
   categoryAddForm: FormGroup;
   categoryDetail: any;
   errorMessage: string;
@@ -59,6 +62,12 @@ export class CategoryComponent implements OnInit {
     this.categoryService.getCategoryById(id).subscribe((response: Response) => {
       console.log(response.responseContent);
       this.categoryDetail = response.responseContent;
+      this.edit = false;
+      if (this.categoryDetail.parent_id) {
+        this.show = true;
+      } else {
+        this.show = false;
+      }
       this.categoryAddForm.patchValue({
         name_az: this.categoryDetail.name_az,
         name_en: this.categoryDetail.name_en,
@@ -100,6 +109,15 @@ export class CategoryComponent implements OnInit {
         delete obj[propName];
       }
     }
+  }
+
+  resetAll() {
+    this.categoryAddForm.reset();
+    this.show = false;
+    this.edit = true;
+    this.categoryDetail = {};
+    console.log(this.categoryDetail);
+    
   }
 
 }

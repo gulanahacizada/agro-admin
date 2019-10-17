@@ -75,4 +75,9 @@ export class UnitsComponent implements OnInit {
     });
   }
 
+  reset() {
+    this.addUnitForm.reset();
+    this.unitDetail = {};
+  }
+
 }

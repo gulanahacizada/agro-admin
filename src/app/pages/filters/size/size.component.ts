@@ -75,4 +75,9 @@ export class SizeComponent implements OnInit {
     });
   }
 
+  reset() {
+    this.addKalibryForm.reset();
+    this.kalibryDetail = {};
+  }
+
 }
