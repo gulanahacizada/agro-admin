@@ -30,6 +30,7 @@ export class JwtInterceptor implements HttpInterceptor {
               if (response.responseCode == 1) {
                 localStorage.clear();
                 localStorage.setItem('acc_jwt', response.responseContent.access_token);
+                return next.handle(request);
               }
             });
           }
