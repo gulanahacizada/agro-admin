@@ -45,10 +45,14 @@
           </div>
         </div>
         <div class="panel-footer">
-          <button (click)="deleteCategory()" *ngIf="qualityDetail?.id"  class="btn bg-red border-0 shadow" title="Sil" data-target-modal="alert-modal">
+          <button type="button" (click)="deleteCategory()" *ngIf="qualityDetail?.id"  class="btn bg-red border-0 shadow" title="Sil">
             <i aria-hidden="true" class="icon-trash mr-10"></i>
             Sil
           </button>
+          <button (click)="reset()" type="button" *ngIf="qualityDetail?.id" class="btn bg-white shadow border-0 "
+          title="Yadda saxla">
+           Reset
+        </button>
           <button type="submit" [disabled]="!addQualityForm.valid" class="btn bg-green shadow border-0 float-right"
             title="Yadda saxla">
             Yadda saxla

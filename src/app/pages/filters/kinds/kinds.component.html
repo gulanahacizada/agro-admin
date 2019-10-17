@@ -47,9 +47,12 @@
           </div>
           <div class="clear mb-15">
             <label>Ana kateqoriya</label>
-            <p-dropdown placeholder="Ana kateqoriya seçin" filter="true" [options]="selectCategoryList"
+            <p-dropdown *ngIf="!edit" placeholder="Ana kateqoriya seçin"  filter="true" [options]="selectCategoryList"
               (onChange)="onSelectCategory($event)" formControlName="parentId" class="input select custom">
             </p-dropdown>
+            <p-dropdown *ngIf="edit" placeholder="{{kindDetail?.parent_catregory?.name}}"  filter="true" [options]="selectCategoryList"
+            (onChange)="onSelectCategory($event)" formControlName="parentId" class="input select custom">
+          </p-dropdown>
           </div>
           <div class="clear">
             <label>Alt kateqoriya</label>
@@ -59,9 +62,13 @@
           </div>
         </div>
         <div class="panel-footer">
-          <button (click)="deleteKind()" *ngIf="kindDetail?.id"  class="btn bg-red border-0 shadow" title="Sil" data-target-modal="alert-modal">
+          <button (click)="deleteKind()" *ngIf="kindDetail?.id" type="button"  class="btn bg-red border-0 shadow" title="Sil">
             <i aria-hidden="true" class="icon-trash mr-10"></i>
             Sil
+          </button>
+          <button (click)="reset()" *ngIf="kindDetail?.id" type="button"  class="btn bg-white  border-0 shadow" title="Sil" >
+            <i aria-hidden="true" class="icon-trash mr-10"></i>
+            Reset
           </button>
           <button type="submit" [disabled]='!addKindForm.valid' class="btn bg-green shadow border-0 float-right"
             title="Yadda saxla">

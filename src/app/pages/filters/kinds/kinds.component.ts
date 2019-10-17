@@ -20,6 +20,7 @@ export class KindsComponent implements OnInit {
   addKindForm: FormGroup;
   kindDetail: any;
   errorMessage: any;
+  edit = false;
 
   constructor(
     private kindService: KindsService,
@@ -97,14 +98,14 @@ export class KindsComponent implements OnInit {
         label: r.name,
         value: r.id
       }));
-      
+      this.edit = true;
       this.addKindForm.patchValue({
         name_az: this.kindDetail.name_az,
         name_en: this.kindDetail.name_en,
         name_ru: this.kindDetail.name_ru,
         category_id: this.kindDetail.category.id,
         id: this.kindDetail.id,
-        parentId: this.kindDetail.category.parent_id,
+        parentId: this.kindDetail.parent_catregory.id,
       });
       console.log(this.addKindForm.value);
     });
@@ -121,5 +122,11 @@ export class KindsComponent implements OnInit {
         console.log(this.errorMessage);
       }
     });
+  }
+
+  reset() {
+    this.addKindForm.reset();
+    this.edit = false;
+    this.kindDetail = {};
   }
 }

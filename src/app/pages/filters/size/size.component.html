@@ -51,6 +51,10 @@
             <i aria-hidden="true" class="icon-trash mr-10"></i>
             Sil
           </button>
+          <button (click)="reset()" type="button" *ngIf="kalibryDetail?.id"  class="btn bg-white shadow border-0 "
+          title="Yadda saxla">
+           Reset
+        </button>
           <button type="submit" [disabled]="!addKalibryForm.valid" class="btn bg-green shadow border-0 float-right"
             title="Yadda saxla">
             Yadda saxla

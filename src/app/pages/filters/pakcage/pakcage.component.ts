@@ -77,4 +77,9 @@ export class PakcageComponent implements OnInit {
     });
   }
 
+  reset() {
+    this.addPackegForm.reset();
+    this.packegDetail = {};
+  }
+
 }

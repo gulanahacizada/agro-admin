@@ -44,14 +44,14 @@
         <div class="panel-body">
           <div class="row as-7 mb-15">
             <div class="col as-6 xs-12 p-5">
-              <div class="ckbox">
-                <input (input)="OnSelect()" type="radio" class="ckbox" id="category" name="category" checked="">
+              <div class="ckbox" >
+                <input [disabled]="!edit" (input)="OnSelect()" type="radio" class="ckbox" id="category" name="category" checked="">
                 <label for="category">Kateqoriya</label>
               </div>
             </div>
             <div class="col as-6 xs-12 p-5">
               <div class="ckbox">
-                <input type="radio" (input)="OnSelect()" class="ckbox" id="sub-category" name="category">
+                <input [disabled]="!edit" type="radio" (input)="OnSelect()" class="ckbox" id="sub-category" name="category">
                 <label for="sub-category">Alt kateqoriya</label>
               </div>
             </div>
@@ -79,6 +79,10 @@
             title="Yadda saxla">
             Yadda saxla
           </button>
+          <button type="button" (click)="resetAll()" *ngIf="categoryDetail?.id"  class="btn bg-white shadow border-0"
+          title="Yadda saxla">
+          Reset
+        </button>
           <button (click)="deleteCategory()" *ngIf="categoryDetail?.id" class="btn bg-red border-0 shadow"  title="Sil" type="button">
             <i _ngcontent-serverapp-c4="" aria-hidden="true" class="icon-trash mr-10"></i>
             Sil 
