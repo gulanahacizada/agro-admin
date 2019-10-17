@@ -10,6 +10,7 @@ export class AppService extends HttpsService {
 
   public LOGIN = 'auth/login';
   public LOGOUT = 'auth/logout';
+  public REFRESH = 'auth/refresh';
   public CATEGORY = 'category';
   public KIND = 'kinds';
   public PACKEGE = 'package';
@@ -38,5 +39,9 @@ export class AppService extends HttpsService {
   }
   public logout(params: any = {}): Observable<any> {
     return this.post(this.http, this.LOGOUT, params);
+  }
+
+  public refresh(params: any = {}): Observable<any> {
+    return this.post(this.http, this.REFRESH, params);
   }
 }

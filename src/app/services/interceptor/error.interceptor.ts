@@ -1,3 +1,4 @@
+import { Response } from 'src/app/interfaces/response';
 
 
 import { Injectable } from '@angular/core';
@@ -16,9 +17,19 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
-
       tap(evt => {
+        // token expire
         if (evt instanceof HttpResponse) {
+          // if (evt.body && evt.body.responseCode == 10) {
+          //   console.log(evt)
+          //   this.appService.refresh().subscribe((response: Response) => {
+          //     if (response.responseCode == 1) {
+          //       localStorage.clear();
+          //       localStorage.setItem('acc_jwt', response.responseContent.access_token);
+          //     }
+          //   });
+
+          // }
           // pass url in component like : params['navigatorUrl'] = '/hr';
           // tslint:disable-next-line: triple-equals
           if (request.body && request.body.hasOwnProperty('navigatorUrl') && (evt.body.responseCode == 1)) {
