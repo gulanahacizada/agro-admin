@@ -12,6 +12,8 @@ export class QualityComponent implements OnInit {
 
   qualityes: any;
   addQualityForm: FormGroup;
+  qualityDetail: any;
+  errorMessage: string;
 
   constructor(
     private qualityService: QualityService,
@@ -34,6 +36,7 @@ export class QualityComponent implements OnInit {
       name_az: [, Validators.required],
       name_ru: [, Validators.required],
       name_en: [, Validators.required],
+      id: null
     });
   }
 
@@ -46,6 +49,31 @@ export class QualityComponent implements OnInit {
         }
       });
     }
+  }
+
+  getQualityById(id: any) {
+    this.qualityService.getQualityById(id).subscribe((response: Response) => {
+      console.log(response.responseContent);
+      this.qualityDetail = response.responseContent;
+      this.addQualityForm.patchValue({
+        name_az: this.qualityDetail.name_az,
+        name_en: this.qualityDetail.name_en,
+        name_ru: this.qualityDetail.name_ru,
+        id: this.qualityDetail.id
+      });
+    });
+  }
+
+  deleteCategory() {
+    this.qualityService.deleteQuality(this.qualityDetail.id).subscribe((response: Response) => {
+      if (response.responseCode == 1) {
+        this.addQualityForm.reset();
+        this.getAllQuality();
+      } else if (response.responseCode == 2) {
+        this.errorMessage = response.responseMessage;
+        console.log(this.errorMessage);
+      }
+    });
   }
 
 }

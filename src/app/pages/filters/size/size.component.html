@@ -13,7 +13,9 @@
             <li *ngFor="let item of kalibryList" class="box box-solid dd-item dd3-item collapsed-box">
               <div class="box-tools dd3-content clearfix">
                 <span>{{item?.name}} </span>
-                <a class="float-right"><i aria-hidden="true" class="icon-settings"></i></a>
+                <a (click)="getKalibryById(item?.id)"  class="float-right">
+                    <i aria-hidden="true" class="icon-pen-5"></i>
+                </a>
               </div>
             </li>
           </ol>
@@ -45,7 +47,7 @@
           </div>
         </div>
         <div class="panel-footer">
-          <button class="btn bg-red border-0 shadow" title="Sil" data-target-modal="alert-modal">
+          <button (click)="deleteKalibry()" *ngIf="kalibryDetail?.id"  type="button" class="btn bg-red border-0 shadow" title="Sil" data-target-modal="alert-modal">
             <i aria-hidden="true" class="icon-trash mr-10"></i>
             Sil
           </button>

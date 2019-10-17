@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SizeService extends AppService{
+export class SizeService extends AppService {
 
   constructor(public http: HttpClient) {
     super(http);
@@ -17,6 +17,19 @@ export class SizeService extends AppService{
   }
 
   public addKalibry( params: any = {}): Observable<any> {
-    return this.post(this.http, this.KALIBRY, params);
+
+    if (params.id) {
+      return this.post(this.http, this.KALIBRY_UPDATE + '/' + params.id, params);
+    } else {
+      return this.post(this.http, this.KALIBRY, params);
+    }
+  }
+
+  public getKalibryById(params: any = {}): Observable<any> {
+    return this.get(this.http, this.KALIBRY + '/' + params);
+  }
+
+  public deleteKalibry(id: any): Observable<any> {
+    return this.post(this.http, this.KALIBRY + '/' + 'delete' + '/' + id , null);
   }
 }
