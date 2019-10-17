@@ -25,7 +25,6 @@ export class JwtInterceptor implements HttpInterceptor {
       tap(evt => {
         if (evt instanceof HttpResponse) {
           if (evt.body && evt.body.responseCode == 11) {
-            console.log(evt)
             this.appService.refresh().subscribe((response: Response) => {
               if (response.responseCode == 1) {
                 localStorage.clear();
