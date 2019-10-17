@@ -17,6 +17,8 @@ export class CategoryComponent implements OnInit {
   selectCategoryList: SelectList[];
   show: boolean;
   categoryAddForm: FormGroup;
+  categoryDetail: any;
+  errorMessage: string;
 
   constructor(
     private categoryService: CategoryService,
@@ -49,6 +51,21 @@ export class CategoryComponent implements OnInit {
       name_ru: [, Validators.required],
       name_en: [, Validators.required],
       parent_id: [],
+      id: null
+    });
+  }
+
+  getCategoryById(id: any) {
+    this.categoryService.getCategoryById(id).subscribe((response: Response) => {
+      console.log(response.responseContent);
+      this.categoryDetail = response.responseContent;
+      this.categoryAddForm.patchValue({
+        name_az: this.categoryDetail.name_az,
+        name_en: this.categoryDetail.name_en,
+        name_ru: this.categoryDetail.name_ru,
+        parent_id: this.categoryDetail.parent_id,
+        id: this.categoryDetail.id
+      });
     });
   }
 
@@ -63,6 +80,18 @@ export class CategoryComponent implements OnInit {
       });
     }
 
+  }
+
+  deleteCategory() {
+    this.categoryService.deleteCategory(this.categoryDetail.id).subscribe((response: Response) => {
+      if (response.responseCode == 1) {
+        this.categoryAddForm.reset();
+        this.getAllCategory();
+      } else if (response.responseCode == 2) {
+        this.errorMessage = response.responseMessage;
+        console.log(this.errorMessage);
+      }
+    });
   }
 
   clean(obj) {

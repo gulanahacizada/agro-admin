@@ -12,6 +12,8 @@ export class SizeComponent implements OnInit {
 
   kalibryList: any;
   addKalibryForm: FormGroup;
+  kalibryDetail: any;
+  errorMessage: any;
 
   constructor(
     private kalibryService: SizeService,
@@ -34,6 +36,7 @@ export class SizeComponent implements OnInit {
       name_az: [, Validators.required],
       name_ru: [, Validators.required],
       name_en: [, Validators.required],
+      id: null
     });
   }
 
@@ -46,6 +49,30 @@ export class SizeComponent implements OnInit {
         }
       });
     }
+  }
+
+  getKalibryById(id: any) {
+    this.kalibryService.getKalibryById(id).subscribe((response: Response) => {
+      console.log(response.responseContent);
+      this.kalibryDetail = response.responseContent;
+      this.addKalibryForm.patchValue({
+        name_az: this.kalibryDetail.name_az,
+        name_en: this.kalibryDetail.name_en,
+        name_ru: this.kalibryDetail.name_ru,
+        id: this.kalibryDetail.id
+      });
+    });
+  }
+
+  deleteKalibry() {
+    this.kalibryService.deleteKalibry(this.kalibryDetail.id).subscribe((response: Response) => {
+      if (response.responseCode == 1) {
+        this.addKalibryForm.reset();
+        this.getAllKalibry();
+      } else if (response.responseCode == 2) {
+        this.errorMessage = response.responseMessage;
+      }
+    });
   }
 
 }

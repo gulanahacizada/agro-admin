@@ -12,6 +12,8 @@ export class UnitsComponent implements OnInit {
 
   units: any;
   addUnitForm: FormGroup;
+  unitDetail: any;
+  errorMessage: any;
 
   constructor(
     private unitService: UnitsService,
@@ -34,6 +36,7 @@ export class UnitsComponent implements OnInit {
       name_az: [, Validators.required],
       name_ru: [, Validators.required],
       name_en: [, Validators.required],
+      id: null
     });
   }
 
@@ -46,6 +49,30 @@ export class UnitsComponent implements OnInit {
         }
       });
     }
+  }
+
+  getUnitById(id: any) {
+    this.unitService.getUnitId(id).subscribe((response: Response) => {
+      console.log(response.responseContent);
+      this.unitDetail = response.responseContent;
+      this.addUnitForm.patchValue({
+        name_az: this.unitDetail.name_az,
+        name_en: this.unitDetail.name_en,
+        name_ru: this.unitDetail.name_ru,
+        id: this.unitDetail.id
+      });
+    });
+  }
+
+  deleteUnit() {
+    this.unitService.deleteUnit(this.unitDetail.id).subscribe((response: Response) => {
+      if (response.responseCode == 1) {
+        this.addUnitForm.reset();
+        this.getAllUnits();
+      } else if (response.responseCode == 2) {
+        this.errorMessage = response.responseMessage;
+      }
+    });
   }
 
 }

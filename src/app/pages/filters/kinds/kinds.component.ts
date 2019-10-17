@@ -18,6 +18,8 @@ export class KindsComponent implements OnInit {
   subCategoryList: SelectList[];
   subCategory: any;
   addKindForm: FormGroup;
+  kindDetail: any;
+  errorMessage: any;
 
   constructor(
     private kindService: KindsService,
@@ -60,6 +62,8 @@ export class KindsComponent implements OnInit {
       name_ru: [, Validators.required],
       name_en: [, Validators.required],
       category_id: [, Validators.required],
+      id: null,
+      parentId: null
     });
   }
 
@@ -76,10 +80,46 @@ export class KindsComponent implements OnInit {
 
   addKind() {
     if (this.addKindForm.valid) {
-      this.kindService.addKind(this.addKindForm.value).subscribe(() => {
-        this.addKindForm.reset();
-        this.getAllKind();
+      this.kindService.addKind(this.addKindForm.value).subscribe((response: Response) => {
+        if (response.responseCode == 1) {
+          this.addKindForm.reset();
+          this.getAllKind();
+        }
       });
     }
+  }
+
+  getKindById(id: any) {
+    this.kindService.getKindById(id).subscribe((response: Response) => {
+      console.log(response.responseContent);
+      this.kindDetail = response.responseContent;
+      this.subCategoryList = (response.responseContent.parent_catregory.sub_categories || []).map((r: any) => ({
+        label: r.name,
+        value: r.id
+      }));
+      
+      this.addKindForm.patchValue({
+        name_az: this.kindDetail.name_az,
+        name_en: this.kindDetail.name_en,
+        name_ru: this.kindDetail.name_ru,
+        category_id: this.kindDetail.category.id,
+        id: this.kindDetail.id,
+        parentId: this.kindDetail.category.parent_id,
+      });
+      console.log(this.addKindForm.value);
+    });
+  }
+
+
+  deleteKind() {
+    this.kindService.deleteKind(this.kindDetail.id).subscribe((response: Response) => {
+      if (response.responseCode == 1) {
+        this.addKindForm.reset();
+        this.getAllKind();
+      } else if (response.responseCode == 2) {
+        this.errorMessage = response.responseMessage;
+        console.log(this.errorMessage);
+      }
+    });
   }
 }

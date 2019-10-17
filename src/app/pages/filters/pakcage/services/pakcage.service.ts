@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class PakcageService extends AppService{
+export class PakcageService extends AppService {
 
   constructor(public http: HttpClient) {
     super(http);
@@ -17,6 +17,20 @@ export class PakcageService extends AppService{
   }
 
   public addPackeg( params: any = {}): Observable<any> {
-    return this.post(this.http, this.PACKEGE, params);
+    if (params.id) {
+      return this.post(this.http, this.PACKEGE_UPDATE + '/' + params.id, params);
+    } else {
+      return this.post(this.http, this.PACKEGE, params);
+    }
   }
+
+  public getPackegById(params: any = {}): Observable<any> {
+    return this.get(this.http, this.PACKEGE + '/' + params);
+  }
+
+
+  public deletePackeg(id: any): Observable<any> {
+    return this.post(this.http, this.PACKEGE + '/' + 'delete' + '/' + id , null);
+  }
+
 }

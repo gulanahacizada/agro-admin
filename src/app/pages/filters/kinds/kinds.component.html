@@ -13,7 +13,9 @@
             <li *ngFor="let kind of kinds" class="box box-solid dd-item dd3-item collapsed-box">
               <div class="box-tools dd3-content clearfix">
                 <span> {{kind?.name}} </span>
-                <a class="float-right"><i aria-hidden="true" class="icon-settings"></i></a>
+                <a (click)="getKindById(kind?.id)" class="float-right">
+                    <i aria-hidden="true" class="icon-pen-5"></i>
+                </a>
               </div>
             </li>
           </ol>
@@ -46,7 +48,7 @@
           <div class="clear mb-15">
             <label>Ana kateqoriya</label>
             <p-dropdown placeholder="Ana kateqoriya seçin" filter="true" [options]="selectCategoryList"
-              (onChange)="onSelectCategory($event)" class="input select custom">
+              (onChange)="onSelectCategory($event)" formControlName="parentId" class="input select custom">
             </p-dropdown>
           </div>
           <div class="clear">
@@ -57,7 +59,7 @@
           </div>
         </div>
         <div class="panel-footer">
-          <button class="btn bg-red border-0 shadow" title="Sil" data-target-modal="alert-modal">
+          <button (click)="deleteKind()" *ngIf="kindDetail?.id"  class="btn bg-red border-0 shadow" title="Sil" data-target-modal="alert-modal">
             <i aria-hidden="true" class="icon-trash mr-10"></i>
             Sil
           </button>

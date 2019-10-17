@@ -12,6 +12,8 @@ export class PakcageComponent implements OnInit {
 
   packeges: any;
   addPackegForm: FormGroup;
+  packegDetail: any;
+  errorMessage: any;
 
   constructor(
     private packegService: PakcageService,
@@ -34,6 +36,7 @@ export class PakcageComponent implements OnInit {
       name_az: [, Validators.required],
       name_ru: [, Validators.required],
       name_en: [, Validators.required],
+      id: null
     });
   }
 
@@ -46,6 +49,32 @@ export class PakcageComponent implements OnInit {
         }
       });
     }
+  }
+
+
+  getPackegById(id: any) {
+    this.packegService.getPackegById(id).subscribe((response: Response) => {
+      console.log(response.responseContent);
+      this.packegDetail = response.responseContent;
+      this.addPackegForm.patchValue({
+        name_az: this.packegDetail.name_az,
+        name_en: this.packegDetail.name_en,
+        name_ru: this.packegDetail.name_ru,
+        id: this.packegDetail.id
+      });
+    });
+  }
+
+
+  deletePackeg() {
+    this.packegService.deletePackeg(this.packegDetail.id).subscribe((response: Response) => {
+      if (response.responseCode == 1) {
+        this.addPackegForm.reset();
+        this.getAllPackeg();
+      } else if (response.responseCode == 2) {
+        this.errorMessage = response.responseMessage;
+      }
+    });
   }
 
 }
