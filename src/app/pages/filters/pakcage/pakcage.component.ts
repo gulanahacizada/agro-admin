@@ -54,7 +54,6 @@ export class PakcageComponent implements OnInit {
 
   getPackegById(id: any) {
     this.packegService.getPackegById(id).subscribe((response: Response) => {
-      console.log(response.responseContent);
       this.packegDetail = response.responseContent;
       this.addPackegForm.patchValue({
         name_az: this.packegDetail.name_az,

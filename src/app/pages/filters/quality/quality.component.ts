@@ -53,7 +53,6 @@ export class QualityComponent implements OnInit {
 
   getQualityById(id: any) {
     this.qualityService.getQualityById(id).subscribe((response: Response) => {
-      console.log(response.responseContent);
       this.qualityDetail = response.responseContent;
       this.addQualityForm.patchValue({
         name_az: this.qualityDetail.name_az,
@@ -71,7 +70,6 @@ export class QualityComponent implements OnInit {
         this.getAllQuality();
       } else if (response.responseCode == 2) {
         this.errorMessage = response.responseMessage;
-        console.log(this.errorMessage);
       }
     });
   }

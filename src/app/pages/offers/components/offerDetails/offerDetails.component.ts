@@ -29,11 +29,10 @@ export class OfferDetailsComponent implements OnInit {
   getOfferById() {
     this.offerService.getDialogById(this.id).subscribe((response: Response) => {
       this.offerInfo = response.responseContent;
-      console.log(response.responseContent);
     });
   }
 
   offerType() {
-    
+
   }
 }

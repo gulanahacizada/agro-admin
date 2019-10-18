@@ -77,7 +77,6 @@ export class AddAgronomComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.addAgronomForm.value);
     if (this.addAgronomForm.valid) {
       this.agronomService.createAgronom(this.addAgronomForm.value, this.file).subscribe( () => {
         this.router.navigate(['/agronoms']);

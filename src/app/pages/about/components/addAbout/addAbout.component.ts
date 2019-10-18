@@ -39,7 +39,6 @@ export class AddAboutComponent implements OnInit {
 
   onSelectLang(event) {
     this.selectLang = event.value;
-    console.log(this.selectLang);
   }
 
   createAboutAddForm() {

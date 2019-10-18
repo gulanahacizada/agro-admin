@@ -60,7 +60,6 @@ export class CategoryComponent implements OnInit {
 
   getCategoryById(id: any) {
     this.categoryService.getCategoryById(id).subscribe((response: Response) => {
-      console.log(response.responseContent);
       this.categoryDetail = response.responseContent;
       this.edit = false;
       if (this.categoryDetail.parent_id) {
@@ -98,7 +97,6 @@ export class CategoryComponent implements OnInit {
         this.getAllCategory();
       } else if (response.responseCode == 2) {
         this.errorMessage = response.responseMessage;
-        console.log(this.errorMessage);
       }
     });
   }
@@ -116,8 +114,7 @@ export class CategoryComponent implements OnInit {
     this.show = false;
     this.edit = true;
     this.categoryDetail = {};
-    console.log(this.categoryDetail);
-    
+
   }
 
 }

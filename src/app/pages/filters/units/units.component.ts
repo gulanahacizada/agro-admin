@@ -53,7 +53,6 @@ export class UnitsComponent implements OnInit {
 
   getUnitById(id: any) {
     this.unitService.getUnitId(id).subscribe((response: Response) => {
-      console.log(response.responseContent);
       this.unitDetail = response.responseContent;
       this.addUnitForm.patchValue({
         name_az: this.unitDetail.name_az,
