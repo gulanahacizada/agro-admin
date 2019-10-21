@@ -33,13 +33,14 @@ export class AuthService {
     this.appService.refresh().subscribe((response: Response) => {
       if (response.responseCode == 1) {
         this.authTokenNew = response.responseContent.access_token;
-        localStorage.clear();
+        // localStorage.clear();
         localStorage.setItem('acc_jwt', response.responseContent.access_token);
         window.location.reload();
+        return of(this.authTokenNew);
       }
     });
     // console.log(this.authTokenNew)
-    return of(this.authTokenNew);
+    return of(this.currentToken);
     // return of(this.authTokenNew).pipe(delay(1000))
 
     // return Observable.create(obs => {

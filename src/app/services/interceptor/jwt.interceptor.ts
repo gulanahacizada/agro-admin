@@ -13,32 +13,23 @@ export class JwtInterceptor implements HttpInterceptor {
   constructor(private appService: AppService, private authService: AuthService) { }
 
   addToken(req: HttpRequest<any>, token: string): HttpRequest<any> {
-    return req.clone({ setHeaders: { Authorization: 'Bearer ' + token } })
+    const language = localStorage.getItem('lang');
+    const prod_lang = req.params.get('lang');
+    const result = (prod_lang) ? prod_lang : (language) ? language : 'az';
+    return req.clone({
+      setHeaders: {
+        Authorization: 'Bearer ' + token,
+        'Accept-Language': result
+      }
+    });
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // add authorization header with jwt token if available
-    // const currentUser = localStorage.getItem('acc_jwt');
-    // if (currentUser) {
-    //   request = request.clone({
-    //     setHeaders: {
-    //       Authorization: `Bearer ${currentUser}`
-    //     }
-    //   });
-    // }
-    // return next.handle(request);
-    return next.handle(this.addToken(request, this.authService.getAuthToken())).pipe(
+    return next.handle(this.addToken(request, localStorage.getItem('acc_jwt'))).pipe(
       tap(evt => {
         if (evt instanceof HttpResponse) {
           if (evt.body && evt.body.responseCode == 11) {
             return this.handle401Error(request, next);
-            // this.appService.refresh().subscribe((response: Response) => {
-            //   if (response.responseCode == 1) {
-            //     localStorage.clear();
-            //     localStorage.setItem('acc_jwt', response.responseContent.access_token);
-            //     return next.handle(request);
-            //   }
-            // });
           }
         }
       }),
@@ -51,14 +42,12 @@ export class JwtInterceptor implements HttpInterceptor {
   handle401Error(req: HttpRequest<any>, next: HttpHandler) {
     if (!this.isRefreshingToken) {
       this.isRefreshingToken = true;
-
       // Reset here so that the following requests wait until the token
       // comes back from the refreshToken call.
       this.tokenSubject.next(null);
       return this.authService.refreshToken()
         .pipe(
           switchMap((newToken: string) => {
-            console.log(newToken)
             if (newToken) {
               this.tokenSubject.next(newToken);
               return next.handle(this.addToken(req, newToken));
