@@ -3,6 +3,7 @@ import { CategoryService } from './services/category.service';
 import { Response } from 'src/app/interfaces/response';
 import { Category } from 'src/app/interfaces/category';
 import { SelectList } from 'src/app/interfaces/selectList';
+import * as $ from 'jquery';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -117,7 +118,8 @@ export class CategoryComponent implements OnInit {
     this.edit = true;
     this.categoryDetail = {};
     console.log(this.categoryDetail);
-    
   }
+
+
 
 }
