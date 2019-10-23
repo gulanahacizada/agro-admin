@@ -10,6 +10,7 @@ import { AgronomistsComponent } from '../agronomists.component';
 import { AddAgronomComponent } from '../components/addAgronom/addAgronom.component';
 import { EditAgronomComponent } from '../components/editAgronom/editAgronom.component';
 
+
 @NgModule({
   declarations: [AgronomistsComponent, AddAgronomComponent, EditAgronomComponent],
   imports: [
@@ -19,7 +20,8 @@ import { EditAgronomComponent } from '../components/editAgronom/editAgronom.comp
     PaginatorModule,
     ReactiveFormsModule,
     EditorModule,
-    AgronomistsRoutingModule
+    AgronomistsRoutingModule,
+ 
   ]
 })
 export class AgronomistsModule { }

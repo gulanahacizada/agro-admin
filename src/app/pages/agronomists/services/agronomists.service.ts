@@ -42,7 +42,9 @@ export class AgronomistsService extends AppService {
     if (agronom.body_en) {
       formData.append('body_en', agronom.body_en);
     }
-    formData.append('image', file);
+    if (file) {
+      formData.append('image', file);
+    }
     const params = new HttpParams();
     const options = {
       params: params,

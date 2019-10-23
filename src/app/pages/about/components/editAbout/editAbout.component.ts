@@ -38,7 +38,6 @@ export class EditAboutComponent implements OnInit {
 
   onSelectLang(event) {
     this.selectLang = event.value;
-    console.log(this.selectLang);
   }
 
 
@@ -71,7 +70,6 @@ export class EditAboutComponent implements OnInit {
         body_ru: this.aboutInfo.body_ru,
         body_en: this.aboutInfo.body_en,
       });
-      console.log(this.aboutInfo);
     });
   }
 
@@ -100,7 +98,6 @@ export class EditAboutComponent implements OnInit {
 
   onSubmit() {
     if (this.editAboutForm.valid) {
-      console.log(this.editAboutForm.value);
       this.aboutService.editAbout(this.editAboutForm.value, this.id, this.file).subscribe((res: any) => {
         if (res.status == 200) {
           this.router.navigate(['/about']);

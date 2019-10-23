@@ -92,7 +92,6 @@ export class KindsComponent implements OnInit {
 
   getKindById(id: any) {
     this.kindService.getKindById(id).subscribe((response: Response) => {
-      console.log(response.responseContent);
       this.kindDetail = response.responseContent;
       this.subCategoryList = (response.responseContent.parent_catregory.sub_categories || []).map((r: any) => ({
         label: r.name,
@@ -107,7 +106,6 @@ export class KindsComponent implements OnInit {
         id: this.kindDetail.id,
         parentId: this.kindDetail.parent_catregory.id,
       });
-      console.log(this.addKindForm.value);
     });
   }
 
@@ -119,7 +117,6 @@ export class KindsComponent implements OnInit {
         this.getAllKind();
       } else if (response.responseCode == 2) {
         this.errorMessage = response.responseMessage;
-        console.log(this.errorMessage);
       }
     });
   }

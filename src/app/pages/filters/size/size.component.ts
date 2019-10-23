@@ -53,7 +53,6 @@ export class SizeComponent implements OnInit {
 
   getKalibryById(id: any) {
     this.kalibryService.getKalibryById(id).subscribe((response: Response) => {
-      console.log(response.responseContent);
       this.kalibryDetail = response.responseContent;
       this.addKalibryForm.patchValue({
         name_az: this.kalibryDetail.name_az,

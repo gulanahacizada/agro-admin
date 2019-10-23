@@ -5,6 +5,8 @@ import * as $ from 'jquery';
 import { AgronomistsService } from '../../services/agronomists.service';
 import { SelectItem } from 'primeng/components/common/selectitem';
 
+
+
 @Component({
   selector: 'app-addAgronom',
   templateUrl: './addAgronom.component.html',
@@ -24,6 +26,7 @@ export class AddAgronomComponent implements OnInit {
     private agronomService: AgronomistsService,
     private fb: FormBuilder,
     private router: Router,
+
   ) {
     this.langList = [
       { label: 'Az', value: '1' },
@@ -52,7 +55,7 @@ export class AddAgronomComponent implements OnInit {
       body_az: ['', Validators.required],
       body_ru: [''],
       body_en: [''],
-     image: []
+      image: []
     });
   }
 
@@ -76,9 +79,17 @@ export class AddAgronomComponent implements OnInit {
     $('#photo').val('');
   }
 
+  clean(obj) {
+    for (const propName in obj) {
+      if (obj[propName] === null || obj[propName] === undefined || obj[propName] === "" || obj[propName][0] == [""]) {
+        delete obj[propName];
+      }
+    }
+  }
+
   onSubmit() {
-    console.log(this.addAgronomForm.value);
     if (this.addAgronomForm.valid) {
+      this.clean(this.addAgronomForm.value);
       this.agronomService.createAgronom(this.addAgronomForm.value, this.file).subscribe( () => {
         this.router.navigate(['/agronoms']);
       });

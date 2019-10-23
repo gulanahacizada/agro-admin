@@ -11,20 +11,19 @@
     <div class="row as-10 xs-5">
       <div class="col as-12 xl-6 mb-20">
         <label>Agronom</label>
-        <div class="shadow">
-          <div [ngSwitch]="selectLang">
-            <div *ngSwitchCase="1">
-              <p-editor [style]="{'height':'320px'}" placeholder="Azərbaycan Dili" formControlName="body_az">
-              </p-editor>
-            </div>
-            <div *ngSwitchCase="2">
-              <p-editor [style]="{'height':'320px'}" placeholder="Rus Dili" formControlName="body_ru">
-              </p-editor>
-            </div>
-            <div *ngSwitchCase="3">
-              <p-editor [style]="{'height':'320px'}" placeholder="İngilis Dili" formControlName="body_en">
-              </p-editor>
-            </div>
+     
+        <div [ngSwitch]="selectLang">
+          <div *ngSwitchCase="1">
+            <p-editor [style]="{'height':'320px'}" placeholder="Azərbaycan Dili" formControlName="body_az">
+            </p-editor>
+          </div>
+          <div *ngSwitchCase="2">
+            <p-editor [style]="{'height':'320px'}" placeholder="Rus Dili" formControlName="body_ru">
+            </p-editor>
+          </div>
+          <div *ngSwitchCase="3">
+            <p-editor [style]="{'height':'320px'}" placeholder="İngilis Dili" formControlName="body_en">
+            </p-editor>
           </div>
         </div>
       </div>
@@ -59,6 +58,7 @@
             </div>
           </div>
         </div>
+   
         <div class="col as-12 xl-12 mb-20">
           <label for="image">Görüntü</label>
           <span *ngIf="!url" class="btn btn-file bg-white border-0 shadow w-100p">
@@ -80,10 +80,6 @@
     </div>
   </div>
   <div class="panel-footer">
-    <!-- <button class="btn bg-red border-0 shadow" title="Sil" data-target-modal="alert-modal">
-            <i aria-hidden="true" class="icon-trash mr-10"></i>
-            Sil
-        </button> -->
     <button [disabled]="!addAgronomForm.valid" type="submit" class="btn bg-green shadow border-0 float-right"
       title="Yadda saxla">
       Yadda saxla

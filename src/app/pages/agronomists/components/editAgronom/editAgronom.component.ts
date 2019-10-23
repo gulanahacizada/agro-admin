@@ -45,7 +45,6 @@ export class EditAgronomComponent implements OnInit {
 
   onSelectLang(event) {
     this.selectLang = event.value;
-    console.log(this.selectLang);
   }
 
   createAgronomEditForm() {
@@ -77,7 +76,6 @@ export class EditAgronomComponent implements OnInit {
         body_ru: this.agronomInfo.body_ru,
         body_en: this.agronomInfo.body_en,
       });
-      console.log(this.agronomInfo);
     });
   }
 
@@ -103,7 +101,6 @@ export class EditAgronomComponent implements OnInit {
 
   onSubmit() {
     if (this.agronomEditForm.valid) {
-      console.log(this.agronomEditForm.value);
       this.agronomService.editAgronom(this.agronomEditForm.value, this.id, this.file).subscribe((res: any) => {
         if (res.status == 200) {
           this.router.navigate(['/agronoms']);
