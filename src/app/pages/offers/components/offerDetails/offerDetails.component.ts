@@ -33,6 +33,6 @@ export class OfferDetailsComponent implements OnInit {
   }
 
   offerType() {
-
+    
   }
 }
