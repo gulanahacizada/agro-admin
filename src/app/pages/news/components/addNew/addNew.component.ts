@@ -43,13 +43,13 @@ export class AddNewComponent implements OnInit {
 
   createNewsAddForm() {
     this.addNewsForm = this.fb.group({
-      description_az: ['', Validators.required],
+      description_az: [''],
       description_ru: [''],
       description_en: [''],
-      title_az: ['', Validators.required],
+      title_az: [''],
       title_en: [''],
       title_ru: [''],
-      body_az: ['', Validators.required],
+      body_az: [''],
       body_ru: [''],
       body_en: [''],
       image: [],
