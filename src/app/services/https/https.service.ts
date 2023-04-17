@@ -16,7 +16,7 @@ export class HttpsService {
   post_headers = new HttpHeaders().set('Content-type', 'text/plain');
   constructor() { }
 
-  public rootUrl: string = 'https://' + prop.host;
+  public rootUrl: string = 'http://' + prop.host;
 
 
   get(http: HttpClient, resourceUrl: string, params: any = {}): Observable<any> {
