@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       this.appService.login(data).subscribe((response: Response) => {
         if (response.responseCode == 1) {
           localStorage.setItem('acc_jwt', response.responseContent.access_token);
-          window.location.href = '/home';
+          window.location.href = '/users';
         }
         if (response.responseCode == 2) {
           this.errorMessage = response.responseMessage;

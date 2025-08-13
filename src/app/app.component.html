@@ -18,7 +18,7 @@
       <div class="d-table">
         <ul class="d-row right-col type-none m-0 p-0">
           <li class="d-cell no-wrap">
-            <a href="http://vac.agrobirja.az/" rel="external" title="Sayta get">
+            <a href="https://agrobirja.az/" title="Sayta get">
               <i aria-hidden="true" class="icon-eye"></i>
               <span class="ml-5 hide-xs hide-xxs">Sayta get</span>
             </a>
@@ -48,12 +48,12 @@
   </div>
   <nav class="nav-menu accordion-menu pt-10">
     <ul class="nav_menu-list type-none m-0 p-0" role="menubar">
-      <li role="presentation" class="nav_menu-list-item">
+      <!-- <li role="presentation" class="nav_menu-list-item">
         <a [routerLink]="['/home']" routerLinkActive="current-page" title="Ana panel" role="menuitem" class="menu-item">
           <i aria-hidden="true" class="icon-monitor"></i>
           Ana panel
         </a>
-      </li>
+      </li> -->
       <li role="separator" class="mb-10 pb-10"></li>
       <li role="presentation" class="nav_menu-list-item">
         <a [routerLink]="['/users']" routerLinkActive="current-page" title="Üzvlər" role="menuitem" class="menu-item">
@@ -61,19 +61,19 @@
           Üzvlər
         </a>
       </li>
-      <li role="presentation" class="nav_menu-list-item">
+      <!-- <li role="presentation" class="nav_menu-list-item">
         <a [routerLink]="['/news']" routerLinkActive="current-page" title="Xəbərlər" role="menuitem" class="menu-item">
           <i aria-hidden="true" class="icon-newspaper-3"></i>
           Xəbərlər
         </a>
-      </li>
-      <li role="presentation" class="nav_menu-list-item">
+      </li> -->
+      <!-- <li role="presentation" class="nav_menu-list-item">
         <a [routerLink]="['/agronoms']" routerLinkActive="current-page" title="Aqronomlar" role="menuitem"
           class="menu-item">
           <i aria-hidden="true" class="icon-users"></i>
           Aqronomlar
         </a>
-      </li>
+      </li> -->
       <li role="separator" class="mb-10 pb-10"></li>
       <li role="presentation" class="nav_menu-list-item">
         <a [routerLink]="['/offers']" routerLinkActive="current-page" title="Təkliflər" role="menuitem"
@@ -83,12 +83,17 @@
         </a>
       </li>
       <li role="presentation" class="nav_menu-list-item">
-        <a href="javascript:void(0)" title="Müraciətlər" role="button" class="menu-toggle">
+        <!-- <a href="javascript:void(0)" title="Müraciətlər" role="button" class="menu-toggle">
           <i aria-hidden="true" class="icon-envelope"></i>
           <span class="icon-arrow-down tr-3s float-right"></span>
           Müraciətlər
+        </a> -->
+        <a [routerLink]="['/members-request']" routerLinkActive="current-page" title="Üzvlük müraciəti" role="menuitem"
+          class="menu-item">
+          <i aria-hidden="true" class="icon-envelope"></i>
+          Üzvlük müraciətləri
         </a>
-        <ul class="sub_menu type-none m-0 pl-0 pt-10 pb-10" role="menu">
+        <!-- <ul class="sub_menu type-none m-0 pl-0 pt-10 pb-10" role="menu">
           <li role="presentation" class="sub_menu-item">
             <a [routerLink]="['/members-request']" routerLinkActive="current-page" title="Üzvlük müraciəti"
               role="menuitem" class="menu-item">
@@ -101,7 +106,7 @@
               Əlaqə müraciətləri
             </a>
           </li>
-        </ul>
+        </ul> -->
       </li>
       <li role="presentation" class="nav_menu-list-item">
         <a href="javascript:void(0)" title="Statik səhifələr" role="button" class="menu-toggle">
@@ -116,11 +121,11 @@
               Haqqımızda
             </a>
           </li>
-          <li role="presentation" class="sub_menu-item">
+          <!-- <li role="presentation" class="sub_menu-item">
             <a title="İstifadə qaydaları" role="menuitem" class="menu-item">
               İstifadə qaydaları
             </a>
-          </li>
+          </li> -->
         </ul>
       </li>
       <li role="presentation" class="nav_menu-list-item">
@@ -168,12 +173,12 @@
         </ul>
       </li>
       <li role="separator" class="mb-10 pb-10"></li>
-      <li role="presentation" class="nav_menu-list-item">
+      <!-- <li role="presentation" class="nav_menu-list-item">
         <a title="Parametrlər" role="menuitem" class="menu-item">
           <i aria-hidden="true" class="icon-settings"></i>
           Parametrlər
         </a>
-      </li>
+      </li> -->
     </ul>
   </nav>
 </aside>
@@ -184,10 +189,10 @@
   </div>
 </main>
 <!--Main Footer-->
-<footer [hidden]="!loggedIn()" class="main-footer panel pt-10 pb-10 pl-20 pr-30 clear">
+<!-- <footer [hidden]="!loggedIn()" class="main-footer panel pt-10 pb-10 pl-20 pr-30 clear">
   <span class="btn xs border-0 no-shadow text-gray">v 1.3.1</span>
   <a class="btn xs border-0 float-right" data-toggle="tooltip"
     title="Bu sayt TimeSoft tərəfindən kodlanıb və dizayn edilib">
     <b>Created: TimeSoft</b>
   </a>
-</footer>
+</footer> -->
