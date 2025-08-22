@@ -19,7 +19,7 @@ export class AboutService extends AppService {
   }
 
   createAbout(about: any, file: File): Observable<HttpEvent<any>> {
-    const url = 'http://' + prop.host +  '/about';
+    const url = 'https://' + prop.host +  '/about';
     const formData = new FormData();
     formData.append('body_az', about.body_az);
     formData.append('title_az', about.title_az);
@@ -47,7 +47,7 @@ export class AboutService extends AppService {
 
 
   editAbout(about: any, id: any, file: File): Observable<HttpEvent<any>> {
-    const url = 'http://' +  prop.host + '/about' + '/' + id + '/update';
+    const url = 'https://' +  prop.host + '/about' + '/' + id + '/update';
     const formData = new FormData();
     formData.append('title_az', about.title_az);
     formData.append('body_az', about.body_az);
@@ -80,3 +80,4 @@ export class AboutService extends AppService {
   }
 
 }
+
