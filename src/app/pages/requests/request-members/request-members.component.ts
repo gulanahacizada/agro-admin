@@ -40,7 +40,7 @@ export class RequestMembersComponent implements OnInit {
   }
 
   getAllNewUser() {
-    this.membersRequestService.getAllNewUser({ is_company: this.selectType }).subscribe((response: Response) => {
+    this.membersRequestService.getAllNewUser({ is_company: this.selectType,page: this.pagination.page, per_page: this.pagination.per_page  }).subscribe((response: Response) => {
       this.userRequestList = response.responseContent.data;
       this.pagination.per_page = response.responseContent.per_page;
       this.pagination.total = response.responseContent.total;

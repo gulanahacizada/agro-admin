@@ -54,7 +54,7 @@
     </table>
   </div>
   <div class="panel-footer">
-    <p-paginator *ngIf="userRequestList?.lenght" [rows]="pagination?.per_page" [totalRecords]="pagination?.total"
+    <p-paginator *ngIf="userRequestList?.length" [rows]="pagination?.per_page" [totalRecords]="pagination?.total"
       (onPageChange)="paginate($event)"></p-paginator>
   </div>
 </div>

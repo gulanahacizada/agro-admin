@@ -32,6 +32,7 @@ export class AppService extends HttpsService {
   public USER_ADMIN_NEW = 'admin/user/new';
   public USER_ADMIN = 'admin/user';
   public USER_STATUS = 'admin/user/changestatus';
+  public USER_STATUS2 = 'admin/set-verify-user';
   public ADMIN_DIALOGS = 'admin/dialogs';
   public ADMIN_DIALOG = 'admin/dialog';
 

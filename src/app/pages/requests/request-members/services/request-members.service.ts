@@ -23,4 +23,7 @@ export class RequestMembersService  extends AppService {
   public changeStatus(params: any = {}): Observable<any> {
     return this.post(this.http, this.USER_STATUS + '/' + params, null);
   }
+  public changeStatus2(params: any = {}): Observable<any> {
+    return this.post(this.http, this.USER_STATUS2 + '/' + params, null);
+  }
 }
