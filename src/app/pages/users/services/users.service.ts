@@ -23,6 +23,9 @@ export class UsersService  extends AppService {
   public changeStatus(params: any = {}): Observable <any> {
     return this.post(this.http, this.USER_STATUS + '/' + params, null);
   }
+  public changeStatus2(params: any = {}): Observable <any> {
+    return this.post(this.http, this.USER_STATUS2 + '/' + params, null);
+  }
 
   public updateUser(id: any = {}, params = {}): Observable<any> {
     return this.post(this.http, this.USER_ADMIN + '/' + id + '/update', params);

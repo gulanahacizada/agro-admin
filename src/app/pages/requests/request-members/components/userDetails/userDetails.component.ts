@@ -32,10 +32,10 @@ export class UserDetailsComponent implements OnInit {
   }
 
   changeStatus() {
-    this.membersRequestService.changeStatus(this.id).subscribe((response: Response) => {
-      if (response.responseCode == 1) {
+    this.membersRequestService.changeStatus2(`${this.id}?verified=1`).subscribe((response: Response) => {
+      // if (response.responseCode == 1) {
         this.router.navigate(['/members-request']);
-      }
+      // }
     });
   }
 

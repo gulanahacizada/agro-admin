@@ -36,10 +36,10 @@ export class UserDetailsComponent implements OnInit {
   }
 
   changeStatus() {
-    this.userService.changeStatus(this.id).subscribe((response: Response) => {
-      if (response.responseCode == 1) {
+    this.userService.changeStatus2(`${this.id}?verified=0`).subscribe((response: Response) => {
+      // if (response.responseCode == 1) {
         this.router.navigate(['/users']);
-      }
+      // }
     });
   }
 }
