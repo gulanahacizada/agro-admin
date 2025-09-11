@@ -24,9 +24,9 @@ export class OffersComponent implements OnInit {
   ) {
     this.dialogType = [
       { label: 'Bütün təkliflər', value: '3' },
-      { label: 'Gözlenilmədə', value: '2' },
+      { label: 'Gözlənilmədə', value: '2' },
       { label: 'Razılaşmış', value: '1' },
-      { label: 'Rəd edilmiş', value: '0' },
+      { label: 'İmtina edilmiş', value: '0' },
     ];
   }
 

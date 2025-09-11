@@ -22,7 +22,7 @@
           <th>Təklif alan</th>
           <th>Məhsul</th>
           <th>Nəticə</th>
-          <th>Tarix</th>
+          <!-- <th>Tarix</th> -->
           <th>Bax</th>
         </tr>
       </thead>
@@ -36,17 +36,17 @@
             <div [ngSwitch]="offer?.status">
 
               <div *ngSwitchCase="2">
-                Gözlenilmədə
+                Gözlənilmədə
               </div>
               <div *ngSwitchCase="1">
                 Razılaşmış
               </div>
               <div *ngSwitchCase="0">
-                Rəd edilmiş
+                İmtina edilmiş
               </div>
             </div>
           </td>
-          <td>{{offer?.created_at | date: 'dd/MM/yyyy'}}</td>
+          <!-- <td>{{offer?.created_at | date: 'dd/MM/yyyy'}}</td> -->
           <td>
             <a [routerLink]="[ 'details', offer?.id ]" rel="external" aria-label="Bax" title="Bax" data-toggle="tooltip"
               class="btn xs circle bg-white shadow border-0">
