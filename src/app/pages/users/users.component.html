@@ -52,12 +52,12 @@
               <div *ngSwitchCase="1">
                 Hüquqi şəxs
               </div>
-              <div *ngSwitchCase="2">
+              <div *ngSwitchCase="0">
                 Fiziki şəxs
               </div>
             </div>
           </td>
-          <td>{{user?.contacts[i]?.contact}}</td>
+          <td>{{user?.contacts[0]?.contact}}</td>
           <td>{{user?.created_at | date: 'dd/MM/yyyy'}}</td>
           <td>
             <a [routerLink]="[ 'details', user?.id ]" rel="external" aria-label="Bax" title="Bax"
